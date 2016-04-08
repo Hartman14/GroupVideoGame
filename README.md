@@ -1,10 +1,10 @@
 # GroupVideoGame
 CSCI 313 Group Video Game Scripting Code Repository
 {
-use p key to pause and unpause the game.
-the pause menu is a prefab, and currently would need to be added to each level. 
-  -save is not currently implemented.
-  -quit game does work, it brings the player back to the main menu, 
+1. use p key to pause and unpause the game.
+2. the pause menu is a prefab, and currently would need to be added to each level. 
+  a.save is not currently implemented.
+  b.quit game does work, it brings the player back to the main menu, 
     -the main menu quit also works but only if the game is built outside of the editor.
     
   main menu
