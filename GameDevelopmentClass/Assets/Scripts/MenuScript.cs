@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/*Daniel Anderson
+ * apr 8, 2016 12:30a
+ * 
+ */
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
