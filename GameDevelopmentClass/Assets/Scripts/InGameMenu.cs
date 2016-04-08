@@ -33,7 +33,7 @@ public class InGameMenu : MonoBehaviour {
 				}
 
 				if (showPauseMenu == true) {
-
+	
 
 
 

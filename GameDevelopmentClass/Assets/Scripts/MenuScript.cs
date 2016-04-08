@@ -4,9 +4,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
+
 	public string firstScene = "testscene";
 	public Canvas quitMenu; //quit menu canvas
-	public Button newGameButton;  //newgame button //not currently used
+	//public Button newGameButton;  //newgame button //not currently used
 	public Button loadGameButton;//loadgame button //not currently used
 	public Button quitGameButton;//loadgame button //not currently used
 	public Button OptionsButton;//loadgame button //not currently used
@@ -21,6 +22,7 @@ public class MenuScript : MonoBehaviour {
 									};
 
 	public string[] savedGames;
+
 
 
 
