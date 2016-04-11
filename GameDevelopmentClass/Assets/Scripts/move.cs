@@ -10,8 +10,8 @@ public class move : MonoBehaviour {
 	public float gravity = 20.0F;
 
 	public bool invertVertical;
-	public float speedH = 3.0f;
-	public float speedV = 3.0f;
+	public float speedH = 4.0f;  //horizontal x axis
+	public float speedV = 3.0f;	 //veritcal y axis
 
 	private float yaw = 0.0f;
 	private float pitch = 0.0f;
@@ -31,9 +31,10 @@ public class move : MonoBehaviour {
 				moveDirection.y = jumpSpeed;
 
 		}
-		rotate ();
-
-
+		if (Time.deltaTime > 0) {
+			rotate ();
+		}
+		//print (Time.deltaTime);
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move(moveDirection * Time.deltaTime);
 	}
@@ -47,16 +48,23 @@ public class move : MonoBehaviour {
 
 	}
 
+
+
 	public void rotate(){
-		
+		//x axis rotation
+		//do not use deltatime multiplication to pause the mouse movements,  deltatime is not 1 and zero. its more like .02  ,,, Dan
+		yaw   += speedH * Input.GetAxis("Mouse X");
 
-			
+		//y axis pitch
+		pitch = pitch - speedV * Input.GetAxis("Mouse Y")*invertControls;
 
-		yaw += speedH * Input.GetAxis("Mouse X");
-		pitch = pitch-  speedV * Input.GetAxis("Mouse Y")*invertControls;
-
+		if (pitch > 40) { // prevents the player from pitching too far forward.
+			pitch = 40;
+		}
+		if (pitch <-60 ) {  //prevents the player from pitching too far up.
+			pitch = -60;
+			//print (pitch);
+		}
 		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 	}
-
-
 }
