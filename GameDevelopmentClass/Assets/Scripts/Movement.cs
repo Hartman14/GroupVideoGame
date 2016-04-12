@@ -6,20 +6,20 @@ public class Movement : MonoBehaviour {
     
     public float movementSpeed = 20f;
     public float jumpSpeed = 200f;
-    public float GUIsize = 100f;
     float yRotation;
     float xRotation;
     float currentXRotation;
     float currentYRotation;
-    public float GUISize = 50f;
-    float yRotationView;
-    float xRotationView;
-    public float rotationSmoothness = .1f;
+    public float GUISize = 150f;
+    float yRotationView = 50f;
+    float xRotationView = 50f;
+    public float rotationSmoothness = 10f;
 
     public GameObject playerCamera;
     public GameObject player;
     public CharacterController controller;
-    
+
+    Vector3 newPosition;
 
     bool onGround = false;
 
@@ -43,22 +43,30 @@ public class Movement : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            controller.transform.position += Vector3.left * movementSpeed * Time.deltaTime;
+            newPosition = playerCamera.transform.right * (Time.deltaTime * movementSpeed);
+            newPosition.y = 0f;
+            player.transform.position += newPosition;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            controller.transform.position += Vector3.right * movementSpeed * Time.deltaTime;
+            newPosition = -1 * playerCamera.transform.right * (Time.deltaTime * movementSpeed);
+            newPosition.y = 0f;
+            player.transform.position += newPosition;
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            controller.transform.position += Vector3.back * movementSpeed * Time.deltaTime;
+            newPosition = playerCamera.transform.forward * (Time.deltaTime * movementSpeed);
+            newPosition.y = 0f;
+            player.transform.position += newPosition;
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            controller.transform.position += Vector3.forward * movementSpeed * Time.deltaTime;
+            newPosition = -1 * playerCamera.transform.forward * (Time.deltaTime * movementSpeed);
+            newPosition.y = 0f;
+            player.transform.position += newPosition;
         }
     }
 
@@ -72,14 +80,14 @@ public class Movement : MonoBehaviour {
 
         if (recup.Contains(Input.mousePosition))
         {
-            xRotation = Mathf.SmoothDamp(currentXRotation, currentXRotation++, ref xRotationView, rotationSmoothness);
+            xRotation = Mathf.SmoothDamp(currentXRotation, currentXRotation++, ref xRotationView, rotationSmoothness * Time.deltaTime);
             xRotation = Mathf.Clamp(xRotation, -60f, 80f);
             controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
 
         if (recdown.Contains(Input.mousePosition))
         {
-            xRotation = Mathf.SmoothDamp(currentXRotation, currentXRotation--, ref xRotationView, rotationSmoothness);
+            xRotation = Mathf.SmoothDamp(currentXRotation, currentXRotation--, ref xRotationView, rotationSmoothness * Time.deltaTime);
             xRotation = Mathf.Clamp(xRotation, -60f, 80f);
             controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
@@ -87,7 +95,7 @@ public class Movement : MonoBehaviour {
         if (recright.Contains(Input.mousePosition))
         {
             //yRotation = Input.GetAxis("Mouse Y") * rotationSmoothness;
-            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation++, ref yRotationView, rotationSmoothness);
+            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation++, ref yRotationView, rotationSmoothness * Time.deltaTime);
 
             controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
@@ -95,7 +103,7 @@ public class Movement : MonoBehaviour {
         if (recleft.Contains(Input.mousePosition))
         {
             //yRotation = Input.GetAxis("Mouse Y") * rotationSmoothness;
-            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation--, ref yRotationView, rotationSmoothness);
+            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation--, ref yRotationView, rotationSmoothness * Time.deltaTime);
 
             controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
