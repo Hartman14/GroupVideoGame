@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Prefabs/Grant (FirstRoom)/FirstRoomMazeCOMPLETE.unity
+- path: Assets/Scenes/FirstRoom.unity
   isLoaded: 1
   isActive: 1
