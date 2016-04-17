@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RangedWeapon : MonoBehaviour {
 
+    Enemy foe;
     public GameObject Bow;
     public GameObject Arrow;
     public GameObject ShotSpawn;
@@ -23,7 +24,7 @@ public class RangedWeapon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-        if(Input.GetKeyDown(KeyCode.Mouse0) && !InAction)
+        if(Input.GetKeyDown(KeyCode.Mouse0) /*&& !InAction*/)
         {
             Attack();
         }
@@ -32,20 +33,22 @@ public class RangedWeapon : MonoBehaviour {
 
     void Attack()
     {
-        InAction = true;
-        GetComponent<Animation>().CrossFade(BowAttack.name);
-        if (!GetComponent<Animation>().isPlaying)
-        {
+        //InAction = true;
+        //GetComponent<Animation>().CrossFade(BowAttack.name);
+        /*if (!GetComponent<Animation>().isPlaying)
+        {*/
             FireProjectile();
-            InAction = false;
-        }
+            //InAction = false;
+        //}
     }
 
     void FireProjectile()
     {
-        projectile = Arrow;
-        GameObject ShootProjectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
-        ShootProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * ArrowSpeed * 200);
+        
+        projectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody>().AddForce(-transform.forward * ArrowSpeed * 200);
     }
+
+    
 
 }
