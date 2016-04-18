@@ -18,8 +18,10 @@ ModelImporter:
     2300000: pasted__pasted__pasted__pasted__pCube40
     3300000: pasted__pasted__pasted__pasted__pCube40
     4300000: pasted__pasted__pasted__pasted__pCube40
+    6400000: pasted__pasted__pasted__pasted__pCube40
     7400000: swordswing
     9500000: //RootNode
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -84,7 +86,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -116,7 +118,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

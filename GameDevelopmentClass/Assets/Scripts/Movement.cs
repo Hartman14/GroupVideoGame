@@ -10,18 +10,19 @@ public class Movement : MonoBehaviour {
     float xRotation;
     float currentXRotation;
     float currentYRotation;
-    public float GUISize = 150f;
+    public float GUISize = 250f;
     float yRotationView = 50f;
     float xRotationView = 50f;
     public float rotationSmoothness = 10f;
+    public float sensitivity = 3;
 
     public GameObject playerCamera;
     public GameObject player;
-    public CharacterController controller;
+    public Rigidbody controller;
 
     Vector3 newPosition;
 
-    bool onGround = false;
+    //bool onGround = false;
 
     void Start()
     {
@@ -75,8 +76,8 @@ public class Movement : MonoBehaviour {
     {
         var recdown = new Rect(0f, 0f, Screen.width, GUISize);
         var recup = new Rect(0, Screen.height - GUISize, Screen.width, GUISize);
-        var recleft = new Rect(0, 0, GUISize, Screen.height);
-        var recright = new Rect(Screen.width - GUISize, 0, GUISize, Screen.height);
+        var recleft = new Rect(0, 0, (GUISize * 1.5f), Screen.height);
+        var recright = new Rect(Screen.width - (GUISize * 1.5f), 0, (GUISize * 1.5f), Screen.height);
 
         if (recup.Contains(Input.mousePosition))
         {
@@ -95,7 +96,7 @@ public class Movement : MonoBehaviour {
         if (recright.Contains(Input.mousePosition))
         {
             //yRotation = Input.GetAxis("Mouse Y") * rotationSmoothness;
-            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation++, ref yRotationView, rotationSmoothness * Time.deltaTime);
+            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation+=sensitivity, ref yRotationView, rotationSmoothness * Time.deltaTime);
 
             controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
@@ -103,7 +104,7 @@ public class Movement : MonoBehaviour {
         if (recleft.Contains(Input.mousePosition))
         {
             //yRotation = Input.GetAxis("Mouse Y") * rotationSmoothness;
-            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation--, ref yRotationView, rotationSmoothness * Time.deltaTime);
+            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation-=sensitivity, ref yRotationView, rotationSmoothness * Time.deltaTime);
 
             controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }

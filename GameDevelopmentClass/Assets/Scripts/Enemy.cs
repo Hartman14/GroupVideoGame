@@ -4,32 +4,46 @@ using System;
 
 class Enemy : MonoBehaviour {
 
-    
+
+    public GameObject AD;
+    public GameObject SD;
+
 
     public int health = 100;
    
 
     void Update()
     {
-
-    }
-
-    public void damage(int x)
-    {
-        health -= x;
         if (health <= 0)
         {
             death();
         }
     }
 
+    public void damage(int x)
+    {
+        health -= x;
+        
+    }
+
     public void death()
     {
         Debug.Log("death triggered");
-        Destroy(this.gameObject);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
-    
-   
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Arrower")
+        {
+            damage((int)AD.GetComponent<ArrowDamage>().Damage);
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "Sword")
+        {
+            damage((int)SD.GetComponent<MeleeWeapon>().Damage);
+        }
+    }
+
 }

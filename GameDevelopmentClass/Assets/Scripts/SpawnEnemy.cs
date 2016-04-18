@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class SpawnEnemy : MonoBehaviour {
 
-    
+    public GameObject E1;
     
     // Use this for initialization
     void OnTriggerEnter(Collider other)
@@ -14,11 +14,8 @@ public class SpawnEnemy : MonoBehaviour {
 
         foreach (Vector3 myVec in spawnList)
         {
-            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.localScale += new Vector3(2f, 2f, 2f);
-            cube.transform.position = myVec;
-            var myScript = cube.AddComponent<Enemy>();
-            cube.AddComponent<Rigidbody>();
+            
+            GameObject Enemy = (GameObject)Instantiate(E1, myVec, Quaternion.identity); ;
         }
 
         Destroy(this.gameObject);

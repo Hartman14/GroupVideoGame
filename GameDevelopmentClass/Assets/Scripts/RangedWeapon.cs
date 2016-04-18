@@ -24,7 +24,7 @@ public class RangedWeapon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-        if(Input.GetKeyDown(KeyCode.Mouse0) /*&& !InAction*/)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && !InAction)
         {
             Attack();
         }
@@ -38,7 +38,7 @@ public class RangedWeapon : MonoBehaviour {
         /*if (!GetComponent<Animation>().isPlaying)
         {*/
             FireProjectile();
-            //InAction = false;
+            InAction = false;
         //}
     }
 
@@ -47,8 +47,12 @@ public class RangedWeapon : MonoBehaviour {
         
         projectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
         projectile.GetComponent<Rigidbody>().AddForce(-transform.forward * ArrowSpeed * 200);
+        
     }
 
-    
+    public GameObject getProjectile()
+    {
+        return projectile;
+    }
 
 }

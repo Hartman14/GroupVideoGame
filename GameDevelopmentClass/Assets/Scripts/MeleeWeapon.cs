@@ -5,7 +5,7 @@ public class MeleeWeapon : MonoBehaviour {
 
     public GameObject Sword;
 
-    public Animation SwordAttack;
+    public AnimationClip SwordAttack;
 
     public float Damage;
 
@@ -25,6 +25,10 @@ public class MeleeWeapon : MonoBehaviour {
         {
             Attack();
         }
+        if (InAction)
+        {
+            InAction = false;
+        }
 
     }
 
@@ -37,4 +41,5 @@ public class MeleeWeapon : MonoBehaviour {
             InAction = false;
         }
     }
+
 }
