@@ -5,9 +5,6 @@ using System;
 class Enemy : MonoBehaviour {
 
 
-    public GameObject AD;
-    public GameObject SD;
-
 
     public int health = 100;
    
@@ -34,15 +31,15 @@ class Enemy : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Arrower")
+        if(other.gameObject.tag == "Arrow")
         {
-            damage((int)AD.GetComponent<ArrowDamage>().Damage);
+            damage((int)other.GetComponent<ArrowDamage>().Damage);
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "Sword")
         {
-            damage((int)SD.GetComponent<MeleeWeapon>().Damage);
+            damage((int)other.GetComponent<MeleeWeapon>().Damage);
         }
     }
 

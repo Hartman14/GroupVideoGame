@@ -3,12 +3,12 @@ using System.Collections;
 
 public class OutOfBounds : MonoBehaviour {
 
-    public GameObject Ranger;
+    
 
     // Use this for initialization
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject == Ranger)
+        if(other.gameObject.tag == "Arrow")
         {
             Destroy(other.gameObject);
         }
