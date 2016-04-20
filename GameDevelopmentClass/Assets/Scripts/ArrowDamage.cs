@@ -5,10 +5,6 @@ public class ArrowDamage : MonoBehaviour {
 
     public float Damage = 30f;
 
-    public GameObject Arrow;
-
-    public Transform ArrowPosition;
-
 	// Use this for initialization
 	void Start () {
 	

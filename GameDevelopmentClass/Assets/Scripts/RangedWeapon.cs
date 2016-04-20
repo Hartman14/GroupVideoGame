@@ -8,13 +8,19 @@ public class RangedWeapon : MonoBehaviour {
     public GameObject Arrow;
     public GameObject ShotSpawn;
     GameObject projectile;
+    public GameObject BowArrow;
 
-    public Animation BowAttack;
+    public Transform Player;
+
+    public AnimationClip BowAttack;
+    public AnimationClip BowReload;
 
     public float Damage;
     public float ArrowSpeed;
 
     bool InAction = false;
+    bool ArrowFire = false;
+    bool needReload = false;
 
 	// Use this for initialization
 	void Start () {
@@ -29,30 +35,56 @@ public class RangedWeapon : MonoBehaviour {
             Attack();
         }
 
-	}
+        if (!InAction )
+        {
+            InAction = false;
+        }
+
+        if (!GetComponent<Animation>().isPlaying && ArrowFire)
+        {
+            ArrowFire = false;
+            InAction = false;
+            BowArrow.SetActive(false);
+            needReload = true;
+            FireProjectile();
+        }
+
+        if (needReload)
+        {
+            Reload();
+        }
+        
+    }
 
     void Attack()
     {
         //InAction = true;
-        //GetComponent<Animation>().CrossFade(BowAttack.name);
-        /*if (!GetComponent<Animation>().isPlaying)
-        {*/
-            FireProjectile();
-            InAction = false;
-        //}
+        ArrowFire = true;
+        GetComponent<Animation>().CrossFade(BowAttack.name);
+        
+        
     }
 
     void FireProjectile()
     {
         
         projectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody>().AddForce(-transform.forward * ArrowSpeed * 200);
+        projectile.transform.Rotate(Player.rotation.z, Player.rotation.x + 270f, Player.rotation.y);
+        projectile.GetComponent<Rigidbody>().AddForce(-transform.right* ArrowSpeed * 100);
         
     }
 
     public GameObject getProjectile()
     {
         return projectile;
+    }
+
+    void Reload()
+    {
+        BowArrow.SetActive(true);
+        needReload = false;
+        GetComponent<Animation>().CrossFade(BowReload.name);
+        
     }
 
 }

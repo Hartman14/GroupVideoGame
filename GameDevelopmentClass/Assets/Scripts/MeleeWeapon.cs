@@ -7,6 +7,7 @@ public class MeleeWeapon : MonoBehaviour {
 
     public AnimationClip SwordAttack;
 
+
     public float Damage;
 
     bool InAction = false;
