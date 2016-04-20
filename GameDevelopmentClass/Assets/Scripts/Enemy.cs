@@ -39,7 +39,7 @@ class Enemy : MonoBehaviour {
 
         if (other.gameObject.tag == "Sword")
         {
-            damage((int)other.GetComponent<MeleeWeapon>().Damage);
+            damage((int)other.GetComponent<SwordDamage>().Damage);
         }
     }
 

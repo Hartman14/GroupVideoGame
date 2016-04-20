@@ -45,8 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DontPassThrough.cs" />
      <Compile Include="Assets\Scripts\ArrowDamage.cs" />
+     <Compile Include="Assets\Scripts\DontPassThrough.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyPosition.cs" />
      <Compile Include="Assets\Scripts\HUDminiMapFollow.cs" />
@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\RangedWeapon.cs" />
      <Compile Include="Assets\Scripts\RotateWeapons.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
+     <Compile Include="Assets\Scripts\SwordDamage.cs" />
      <Compile Include="Assets\Scripts\move.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
