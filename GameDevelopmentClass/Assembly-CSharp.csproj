@@ -45,11 +45,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Proximity.cs" />
      <Compile Include="Assets\Scripts\ArrowDamage.cs" />
      <Compile Include="Assets\Scripts\DontPassThrough.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyPosition.cs" />
      <Compile Include="Assets\Scripts\HUDminiMapFollow.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\CameraView.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Inventory.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Armor_Pickup.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Gold_Pickup.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Health_Pickup.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Pickup.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Poison_Pickup.cs" />
      <Compile Include="Assets\Scripts\ListAdder.cs" />
      <Compile Include="Assets\Scripts\MeleeWeapon.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
