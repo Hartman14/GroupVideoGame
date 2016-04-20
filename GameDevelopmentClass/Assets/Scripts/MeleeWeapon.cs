@@ -5,7 +5,8 @@ public class MeleeWeapon : MonoBehaviour {
 
     public GameObject Sword;
 
-    public Animation SwordAttack;
+    public AnimationClip SwordAttack;
+
 
     public float Damage;
 
@@ -14,7 +15,7 @@ public class MeleeWeapon : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -24,6 +25,10 @@ public class MeleeWeapon : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !InAction)
         {
             Attack();
+        }
+        if (InAction)
+        {
+            InAction = false;
         }
 
     }
@@ -37,4 +42,5 @@ public class MeleeWeapon : MonoBehaviour {
             InAction = false;
         }
     }
+
 }

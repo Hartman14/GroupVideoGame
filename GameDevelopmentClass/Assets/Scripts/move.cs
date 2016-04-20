@@ -7,9 +7,9 @@ using System.Collections;
 public class move : MonoBehaviour {
 	public float speed = 6.0F;
 	public float jumpSpeed = 8.0F;
-	public float gravity = 20.0F;
+    public float gravity = 20.0F;
 
-	public bool invertVertical;
+    public bool invertVertical;
 	public float speedH = 4.0f;  //horizontal x axis
 	public float speedV = 3.0f;	 //veritcal y axis
 
