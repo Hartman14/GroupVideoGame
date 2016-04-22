@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     public float movementSpeed = 20f;
     public float jumpSpeed = 200f;
     public float sensitivity = 2;
-    public float gravity = 20.0F;
 
     public float speedH = 6.0f;  //horizontal x axis
     public float speedV = 4.0f;  //veritcal y axis
@@ -38,7 +37,7 @@ public class Movement : MonoBehaviour
         //move to postion
         moveToPosition();
 
-        
+
     }
 
     //moves character, all movements are opposite in game as the mape was creates backwards(ie: only way to compensate)
@@ -47,26 +46,30 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             newPosition = controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
-            
+            newPosition.y = 0f;
+            controller.Move(newPosition);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             newPosition = -1 * controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
+            newPosition.y = 0f;
+            controller.Move(newPosition);
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             newPosition = controller.transform.forward * (Time.deltaTime * movementSpeed) * invertControls;
+            newPosition.y = 0f;
+            controller.Move(newPosition);
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             newPosition = -1 * controller.transform.forward * (Time.deltaTime * movementSpeed)* invertControls;
+            newPosition.y = 0f;
+            controller.Move(newPosition);
         }
-
-        newPosition.y -= gravity * Time.deltaTime;
-        controller.Move(newPosition);
     }
 
     //rotates player
