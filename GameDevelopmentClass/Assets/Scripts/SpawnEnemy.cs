@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SpawnEnemy : MonoBehaviour {
-
+    public int spawnNum;
     //add more for increased enemy options
     public GameObject E1;
 
@@ -20,7 +20,7 @@ public class SpawnEnemy : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         List<Vector3> spawnList = new List<Vector3>();
-            spawnList = EnemyPosition.getSpawns();
+            spawnList = EnemyPosition.getSpawns(spawnNum);
 
         foreach (Vector3 myVec in spawnList)
         {
