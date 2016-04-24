@@ -8,13 +8,16 @@ public class hud : MonoBehaviour {
     public RawImage WeaponImageBow;
     //public Material SwordImg;
     public RawImage[] item_display;
-    public GameObject player;
+    private GameObject player;
+    private Inventory playerInventory;
+
     public Text HealthValueDisplay;
-    public int maxHealth = 100;
+   
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");   //works assuming tag has been set
-        setDisplayHealth(maxHealth, maxHealth);
+        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();   //works assuming tag has been set
+        setDisplayHealth(playerInventory.GetMaxHealth(), playerInventory.GetHealth());
+        
        // print(player.name);
         /*
         List<RawImage> rawImageslist = new List<RawImage>();
@@ -43,7 +46,7 @@ public class hud : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        setDisplayHealth(playerInventory.GetMaxHealth(), playerInventory.GetHealth());
 	}
 
     void switchWeaponImage(string weapon)
