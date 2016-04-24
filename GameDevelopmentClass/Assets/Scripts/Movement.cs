@@ -47,26 +47,33 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             newPosition = controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
-            
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
+
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             newPosition = -1 * controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             newPosition = controller.transform.forward * (Time.deltaTime * movementSpeed) * invertControls;
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             newPosition = -1 * controller.transform.forward * (Time.deltaTime * movementSpeed)* invertControls;
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
         }
 
-        newPosition.y -= gravity * Time.deltaTime;
-        controller.Move(newPosition);
+        
     }
 
     //rotates player
