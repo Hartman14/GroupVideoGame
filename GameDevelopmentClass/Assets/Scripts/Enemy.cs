@@ -4,7 +4,7 @@ using System;
 
 class Enemy : MonoBehaviour {
 
-
+    public AnimationClip Death;
 
     public int health = 100;
    
@@ -13,6 +13,7 @@ class Enemy : MonoBehaviour {
     {
         if (health <= 0)
         {
+            GetComponent<Animation>().CrossFade(Death.name);
             death();
         }
     }
@@ -40,6 +41,11 @@ class Enemy : MonoBehaviour {
         if (other.gameObject.tag == "Sword")
         {
             damage((int)other.GetComponent<SwordDamage>().Damage);
+        }
+
+        else
+        {
+
         }
     }
 
