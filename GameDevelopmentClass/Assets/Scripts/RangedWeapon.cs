@@ -67,10 +67,16 @@ public class RangedWeapon : MonoBehaviour {
 
     void FireProjectile()
     {
-        
-        projectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
-        projectile.transform.Rotate(Player.rotation.z, Player.rotation.x + 270f, Player.rotation.y);
-        projectile.GetComponent<Rigidbody>().AddForce(-transform.right* ArrowSpeed * 100);
+		
+	
+		//projectile = (GameObject)Instantiate(Arrow, Arrow.transform.position, Arrow.transform.rotation);
+
+		//projectile.transform.Rotate(Arrow.transform.rotation);
+		//projectile.GetComponent<Rigidbody>().AddForce(-transform.right* ArrowSpeed * 100);
+		projectile=(GameObject)Instantiate(Arrow,ShotSpawn.transform.position, ShotSpawn.gameObject.transform.rotation);
+    // projectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
+    //projectile.transform.Rotate(Player.rotation.z, Player.rotation.x + 270f, Player.rotation.y);
+    projectile.GetComponent<Rigidbody>().AddForce(-transform.right* ArrowSpeed * 100);
         
     }
 
