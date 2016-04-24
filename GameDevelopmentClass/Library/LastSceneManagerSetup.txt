@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Prefabs/Grant (FirstRoom)/FirstRoomMazeCOMPLETEwithLighting.unity
+- path: Assets/Scenes/Level99.unity
   isLoaded: 1
   isActive: 1

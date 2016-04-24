@@ -1,33 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pickup : MonoBehaviour {
+public class Pickup : MonoBehaviour
+{
+    public AudioClip keyGrab;
 
-    
-    void OnCollisionEnter(Collision collision)
+    public GameObject player;
+    private Inventory playerInventory;
+
+    void awake()
     {
-        if(collision.gameObject.name == "Player")
-        {
-            Debug.Log("Player collided with Collectable: " + this.name + "!");
-            //Put Pickup Code here
-            
-            //Pickup vanishes from the scene
-            Destroy(gameObject);
-        }
-       
-
+        player = GameObject.FindGameObjectWithTag(Tags.player);
+        playerInventory = player.GetComponent<Inventory>();
     }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            AudioSource.PlayClipAtPoint(keyGrab, transform.position);
 
+            Inventory.hasKey = true;
 
+            Destroy(gameObject);
+        }
+    }
 
 }

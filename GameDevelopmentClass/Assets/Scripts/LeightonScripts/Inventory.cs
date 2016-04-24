@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
+    public static bool hasKey;
+
     private static double MAX_HEATLH = 100;
 
     private double health = 50;
