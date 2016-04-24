@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class ListAdder : MonoBehaviour {
+    public int spawnpoint_Num;
 
     
 
@@ -13,7 +14,7 @@ public class ListAdder : MonoBehaviour {
     private void doAction()
     {
         Vector3 currentPos = transform.position;
-        EnemyPosition.listAdd(currentPos);
+        EnemyPosition.listAdd(currentPos, spawnpoint_Num);
         Destroy(this.gameObject);
     }
 	
