@@ -24,7 +24,6 @@ public class EnemyPosition : MonoBehaviour
     //specific "enemypos" list.
     private static List<Vector3> getList(int x)
     {
-        Debug.Log("the int passed here is " + x);
         //switch is used to test all of the numbers 1 - 20 for the sits that are supported
         switch (x)
         {
