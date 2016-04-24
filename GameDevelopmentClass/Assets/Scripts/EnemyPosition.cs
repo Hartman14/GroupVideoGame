@@ -16,6 +16,7 @@ public class EnemyPosition : MonoBehaviour
     //returns the list of all the Vector3s that we want spawns at
     public static List<Vector3> getSpawns(int L_num)
     {
+        Debug.Log("the l number is " + L_num);
         return getList(L_num);
     }
 
@@ -23,6 +24,7 @@ public class EnemyPosition : MonoBehaviour
     //specific "enemypos" list.
     private static List<Vector3> getList(int x)
     {
+        Debug.Log("the int passed here is " + x);
         //switch is used to test all of the numbers 1 - 20 for the sits that are supported
         switch (x)
         {
@@ -66,6 +68,23 @@ public class EnemyPosition : MonoBehaviour
                 return enemypos19;
             case 20:
                 return enemypos20;
+            case 21:
+                return enemypos21;
+            case 22:
+                return enemypos22;
+            case 23:
+                return enemypos23;
+            case 24:
+                return enemypos24;
+            case 25:
+                return enemypos25;
+            case 26:
+                return enemypos26;
+            case 27:
+                return enemypos27;
+            case 28:
+                return enemypos28;
+
             default:
                 Debug.Log("int passed is a non-supported int");
                 break;
@@ -76,6 +95,7 @@ public class EnemyPosition : MonoBehaviour
 
 
     //creates all of the lists that would be called by the various spawn points
+    static List<Vector3> enemypos0 = new List<Vector3>();
     static List<Vector3> enemypos1 = new List<Vector3>();
     static List<Vector3> enemypos2 = new List<Vector3>();
     static List<Vector3> enemypos3 = new List<Vector3>();
@@ -96,6 +116,14 @@ public class EnemyPosition : MonoBehaviour
     static List<Vector3> enemypos18 = new List<Vector3>();
     static List<Vector3> enemypos19 = new List<Vector3>();
     static List<Vector3> enemypos20 = new List<Vector3>();
+    static List<Vector3> enemypos21 = new List<Vector3>();
+    static List<Vector3> enemypos22 = new List<Vector3>();
+    static List<Vector3> enemypos23 = new List<Vector3>();
+    static List<Vector3> enemypos24 = new List<Vector3>();
+    static List<Vector3> enemypos25 = new List<Vector3>();
+    static List<Vector3> enemypos26 = new List<Vector3>();
+    static List<Vector3> enemypos27 = new List<Vector3>();
+    static List<Vector3> enemypos28 = new List<Vector3>();
 
 }
 
