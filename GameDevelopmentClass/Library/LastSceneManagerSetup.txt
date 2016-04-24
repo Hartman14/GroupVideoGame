@@ -2,6 +2,3 @@ sceneSetups:
 - path: Assets/Scenes/FirstRoomMazeCOMPLETEwithLighting1.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/Scenes/Level_3.unity
-  isLoaded: 1
-  isActive: 0
