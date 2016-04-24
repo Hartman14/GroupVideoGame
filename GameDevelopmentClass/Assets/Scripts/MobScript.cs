@@ -6,14 +6,14 @@ public class MobScript : MonoBehaviour
 
     //variables
 
-    public float speed = 5f;
-    public float AttackRange = 2f;
+    public float speed = 10f;
+    public float AttackRange = 5f;
     public float noticeRange = 10f;
     public float gravity = 20.0F;
 
     public CharacterController controller;
 
-    public Transform player;
+    Transform player;
 
     private int stunDuration;
 
@@ -29,8 +29,7 @@ public class MobScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     //-----------------------------------------------------------------------------------------------------------

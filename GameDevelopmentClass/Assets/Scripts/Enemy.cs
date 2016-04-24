@@ -42,6 +42,11 @@ class Enemy : MonoBehaviour {
         {
             damage((int)other.GetComponent<SwordDamage>().Damage);
         }
+
+        else
+        {
+
+        }
     }
 
 }
