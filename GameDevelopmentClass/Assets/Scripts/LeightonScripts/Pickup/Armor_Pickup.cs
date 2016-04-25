@@ -4,7 +4,7 @@ using System.Collections;
 public class Armor_Pickup : MonoBehaviour {
 
     [Range(0, 100)]
-    private double deltaArmor = 1;
+    private int deltaArmor = 1;
 
     void OnCollisionEnter(Collision collision)
     {

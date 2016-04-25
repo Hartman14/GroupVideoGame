@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Movement : MonoBehaviour
 {
-
+    public Camera playersCamera;
 
     public float movementSpeed = 20f;
     public float jumpSpeed = 200f;
@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
-    public int invertControls = -1;
+    public int invertControls = 1;
 
 
     public CharacterController controller;
@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+       playersCamera =gameObject.GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -95,7 +96,10 @@ public class Movement : MonoBehaviour
             pitch = -60;
             //print (pitch);
         }
-        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        //transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+       transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f); //dan
+
+       playersCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);//dan
 
     }
 

@@ -2,13 +2,14 @@
 using System.Collections;
 
 public class Inventory : MonoBehaviour {
-    private static double MAX_HEATLH = 100;
-
-    private double health = 50;
+    private static int MAX_HEALTH = 100;
+    private static int MAX_ARMOR = 100;
+    
+    private int health = 72;
     private int score = 0;
 
-    [Range(0,100)] private double armor;
-
+    [Range(0, 100)] private int armor;
+    
     private GameObject currentWeapon;
     private GameObject[] weapons;
     
@@ -17,7 +18,8 @@ public class Inventory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	     
+        health = 100;
+        armor = 100;
 	}
 	
 	// Update is called once per frame
@@ -25,16 +27,16 @@ public class Inventory : MonoBehaviour {
 	    
 	}
 
-    public void ChangeHealth(double delta)
+    public void ChangeHealth(int delta)
     {
         health += delta;
         if(health <= 0)
         {
             this.Die();
         }
-        else if(health > MAX_HEATLH)
+        else if(health > MAX_HEALTH)
         {
-            health = MAX_HEATLH;
+            health = MAX_HEALTH;
         }
     }
 
@@ -51,7 +53,7 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    public void AddArmor(double armor)
+    public void AddArmor(int armor)
     {
         this.armor += armor;
     }
@@ -62,7 +64,7 @@ public class Inventory : MonoBehaviour {
         //this.EquipWeapon...
     }
 
-    public double GetHealth()
+    public int GetHealth()   //current health
     {
         return health;
     }
@@ -72,14 +74,23 @@ public class Inventory : MonoBehaviour {
         return score;
     }
 
-    public double GetArmor()
+    public int GetArmor()
     {
         return armor;
+
     }
 
-    
+    public int GetMaxHealth()  //get max full health
+    {
+        return MAX_HEALTH;
+    }
+    public int GetMaxArmor()  //get max full Armor
+    {
+        return MAX_ARMOR;
+    }
 
 
 
-    
+
+
 }

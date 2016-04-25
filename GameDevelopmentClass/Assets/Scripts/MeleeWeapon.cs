@@ -37,7 +37,7 @@ public class MeleeWeapon : MonoBehaviour {
     {
         InAction = true;
         GetComponent<Animation>().CrossFade(SwordAttack.name);
-        if (!GetComponent<Animation>().isPlaying)
+        if (!GetComponent<Animation>().IsPlaying(SwordAttack.name))
         {
             InAction = false;
         }
