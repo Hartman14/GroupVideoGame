@@ -4,7 +4,7 @@ using System.Collections;
 public class Poison_Pickup : MonoBehaviour {
 
     [Range(0, -100)]
-    private double deltaHealth = -50;
+    private int deltaHealth = -50;
 
     void OnCollisionEnter(Collision collision)
     {

@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: 6d44171bdc17e8549aea603c638dcbfc
+timeCreated: 1461139696
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: group
+    100004: TheDevilsCannon:group
+    100006: TheDevilsCannon:group1
+    100008: TheDevilsCannon:group2
+    100010: TheDevilsCannon:group3
+    100012: TheDevilsCannon:group4
+    100014: TheDevilsCannon:group5
+    100016: TheDevilsCannon:group6
+    100018: TheDevilsCannon:group7
+    100020: TheDevilsCannon:group8
+    100022: TheDevilsCannon:group8_pasted__pCube1
+    100024: TheDevilsCannon:group8_pasted__pCube2
+    100026: TheDevilsCannon:imagePlane1
+    100028: TheDevilsCannon:joint20
+    100030: TheDevilsCannon:joint21
+    100032: TheDevilsCannon:pasted__pCone4
+    100034: TheDevilsCannon:pasted__pCone4 1
+    100036: TheDevilsCannon:pasted__pCone4 2
+    100038: TheDevilsCannon:pasted__pCube1
+    100040: TheDevilsCannon:pasted__pCube1 1
+    100042: TheDevilsCannon:pasted__pCube1 2
+    100044: TheDevilsCannon:pasted__pCylinder5
+    100046: TheDevilsCannon:pasted__pCylinder5 1
+    100048: TheDevilsCannon:pCone1
+    100050: TheDevilsCannon:pCone2
+    100052: TheDevilsCannon:pCone3
+    100054: TheDevilsCannon:pCone4
+    100056: TheDevilsCannon:pCube1
+    100058: TheDevilsCannon:pCylinder1
+    100060: TheDevilsCannon:pCylinder10
+    100062: TheDevilsCannon:pCylinder11
+    100064: TheDevilsCannon:pCylinder13
+    100066: TheDevilsCannon:pCylinder2
+    100068: TheDevilsCannon:pCylinder3
+    100070: TheDevilsCannon:pCylinder4
+    100072: TheDevilsCannon:pCylinder5
+    100074: TheDevilsCannon:pCylinder6
+    100076: TheDevilsCannon:pCylinder7
+    100078: TheDevilsCannon:pCylinder8
+    100080: TheDevilsCannon:pCylinder9
+    100082: TheDevilsCannon:pPyramid1
+    100084: TheDevilsCannon:pPyramid2
+    100086: TheDevilsCannon:transform1
+    100088: TheDevilsCannon:transform10
+    100090: TheDevilsCannon:transform11
+    100092: TheDevilsCannon:transform12
+    100094: TheDevilsCannon:transform13
+    100096: TheDevilsCannon:transform14
+    100098: TheDevilsCannon:transform15
+    100100: TheDevilsCannon:transform16
+    100102: TheDevilsCannon:transform17
+    100104: TheDevilsCannon:transform18
+    100106: TheDevilsCannon:transform19
+    100108: TheDevilsCannon:transform2
+    100110: TheDevilsCannon:transform20
+    100112: TheDevilsCannon:transform21
+    100114: TheDevilsCannon:transform22
+    100116: TheDevilsCannon:transform23
+    100118: TheDevilsCannon:transform24
+    100120: TheDevilsCannon:transform25
+    100122: TheDevilsCannon:transform26
+    100124: TheDevilsCannon:transform27
+    100126: TheDevilsCannon:transform28
+    100128: TheDevilsCannon:transform3
+    100130: TheDevilsCannon:transform4
+    100132: TheDevilsCannon:transform5
+    100134: TheDevilsCannon:transform6
+    100136: TheDevilsCannon:transform7
+    100138: TheDevilsCannon:transform8
+    100140: TheDevilsCannon:transform9
+    400000: //RootNode
+    400002: group
+    400004: TheDevilsCannon:group
+    400006: TheDevilsCannon:group1
+    400008: TheDevilsCannon:group2
+    400010: TheDevilsCannon:group3
+    400012: TheDevilsCannon:group4
+    400014: TheDevilsCannon:group5
+    400016: TheDevilsCannon:group6
+    400018: TheDevilsCannon:group7
+    400020: TheDevilsCannon:group8
+    400022: TheDevilsCannon:group8_pasted__pCube1
+    400024: TheDevilsCannon:group8_pasted__pCube2
+    400026: TheDevilsCannon:imagePlane1
+    400028: TheDevilsCannon:joint20
+    400030: TheDevilsCannon:joint21
+    400032: TheDevilsCannon:pasted__pCone4
+    400034: TheDevilsCannon:pasted__pCone4 1
+    400036: TheDevilsCannon:pasted__pCone4 2
+    400038: TheDevilsCannon:pasted__pCube1
+    400040: TheDevilsCannon:pasted__pCube1 1
+    400042: TheDevilsCannon:pasted__pCube1 2
+    400044: TheDevilsCannon:pasted__pCylinder5
+    400046: TheDevilsCannon:pasted__pCylinder5 1
+    400048: TheDevilsCannon:pCone1
+    400050: TheDevilsCannon:pCone2
+    400052: TheDevilsCannon:pCone3
+    400054: TheDevilsCannon:pCone4
+    400056: TheDevilsCannon:pCube1
+    400058: TheDevilsCannon:pCylinder1
+    400060: TheDevilsCannon:pCylinder10
+    400062: TheDevilsCannon:pCylinder11
+    400064: TheDevilsCannon:pCylinder13
+    400066: TheDevilsCannon:pCylinder2
+    400068: TheDevilsCannon:pCylinder3
+    400070: TheDevilsCannon:pCylinder4
+    400072: TheDevilsCannon:pCylinder5
+    400074: TheDevilsCannon:pCylinder6
+    400076: TheDevilsCannon:pCylinder7
+    400078: TheDevilsCannon:pCylinder8
+    400080: TheDevilsCannon:pCylinder9
+    400082: TheDevilsCannon:pPyramid1
+    400084: TheDevilsCannon:pPyramid2
+    400086: TheDevilsCannon:transform1
+    400088: TheDevilsCannon:transform10
+    400090: TheDevilsCannon:transform11
+    400092: TheDevilsCannon:transform12
+    400094: TheDevilsCannon:transform13
+    400096: TheDevilsCannon:transform14
+    400098: TheDevilsCannon:transform15
+    400100: TheDevilsCannon:transform16
+    400102: TheDevilsCannon:transform17
+    400104: TheDevilsCannon:transform18
+    400106: TheDevilsCannon:transform19
+    400108: TheDevilsCannon:transform2
+    400110: TheDevilsCannon:transform20
+    400112: TheDevilsCannon:transform21
+    400114: TheDevilsCannon:transform22
+    400116: TheDevilsCannon:transform23
+    400118: TheDevilsCannon:transform24
+    400120: TheDevilsCannon:transform25
+    400122: TheDevilsCannon:transform26
+    400124: TheDevilsCannon:transform27
+    400126: TheDevilsCannon:transform28
+    400128: TheDevilsCannon:transform3
+    400130: TheDevilsCannon:transform4
+    400132: TheDevilsCannon:transform5
+    400134: TheDevilsCannon:transform6
+    400136: TheDevilsCannon:transform7
+    400138: TheDevilsCannon:transform8
+    400140: TheDevilsCannon:transform9
+    4300000: TheDevilsCannon:pPyramid2
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: TheDevilsCannon:pPyramid2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5.75
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

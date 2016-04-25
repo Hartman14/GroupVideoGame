@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/FirstRoom.unity
+- path: Assets/Scenes/FirstRoomMazeCOMPLETEwithLighting.unity
   isLoaded: 1
   isActive: 1
