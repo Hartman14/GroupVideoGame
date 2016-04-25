@@ -28,8 +28,8 @@ public class RangedWeapon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
        
-        PlayerObj = GameObject.FindGameObjectWithTag("Player");
-        PlayersCamera = PlayerObj.GetComponentInChildren<Camera>();
+        //PlayerObj = GameObject.FindGameObjectWithTag("Player");
+        //PlayersCamera = PlayerObj.GetComponentInChildren<Camera>();
        // Player = gameObject.transform;
 	}
 	
