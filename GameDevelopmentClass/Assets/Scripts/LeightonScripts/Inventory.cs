@@ -3,12 +3,13 @@ using System.Collections;
 
 public class Inventory : MonoBehaviour {
     private static int MAX_HEALTH = 100;
-
+    private static int MAX_ARMOR = 100;
+    
     private int health = 72;
     private int score = 0;
 
-    [Range(0,100)] private int armor;
-
+    [Range(0, 100)] private int armor;
+    
     private GameObject currentWeapon;
     private GameObject[] weapons;
     
@@ -17,7 +18,8 @@ public class Inventory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	     
+        health = 100;
+        armor = 100;
 	}
 	
 	// Update is called once per frame
@@ -82,9 +84,13 @@ public class Inventory : MonoBehaviour {
     {
         return MAX_HEALTH;
     }
-    
+    public int GetMaxArmor()  //get max full Armor
+    {
+        return MAX_ARMOR;
+    }
 
 
 
-    
+
+
 }
