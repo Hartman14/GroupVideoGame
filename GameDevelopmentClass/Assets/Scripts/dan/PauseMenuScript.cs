@@ -33,22 +33,35 @@ public class PauseMenuScript : MonoBehaviour {
 			
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown ("p")) {
-			print ("test");
-			if (true) {
-				pauseGame = !pauseGame;
-			}
-			if (pauseGame == true) {	
-				//GameObject.Find ("Main Camera").GetComponent(MouseLook).enabled = false;	
-				showPauseMenu1 ();
-			} else {
-				//GameObject.Find ("Main Camera").GetComponent(MouseLook).enabled = true;
-				resume ();
-			}
-		}
-		if (!pauseGame) {
-			resume ();
-		}
+
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().IsDead())
+        {
+            showDeathMenu(); 
+        }
+
+        else {
+            if (Input.GetKeyDown("p"))
+            {
+                print("test");
+                if (true)
+                {
+                    pauseGame = !pauseGame;
+                }
+                if (pauseGame == true)
+                {
+                    //GameObject.Find ("Main Camera").GetComponent(MouseLook).enabled = false;	
+                    showPauseMenu1();
+                }
+                else {
+                    //GameObject.Find ("Main Camera").GetComponent(MouseLook).enabled = true;
+                    resume();
+                }
+            }
+            if (!pauseGame)
+            {
+                resume();
+            }
+        }
 	}//end of update
 
 
@@ -79,4 +92,11 @@ public class PauseMenuScript : MonoBehaviour {
 	public void saveGame(){
 
 	}
+
+    public void showDeathMenu()
+    {
+        MenuShowing = true;
+        pauseMenu.enabled = true;
+        //print ("Yup you Dead bro, better luck next time"); //yours truely, Jordan
+    }
 }

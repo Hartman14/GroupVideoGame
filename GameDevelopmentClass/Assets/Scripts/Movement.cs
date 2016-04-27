@@ -32,13 +32,19 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ((Time.deltaTime == 0) || (gameObject.GetComponent<Inventory>().IsDead()))
+        {
 
-        //rotates player
-        rotate();
+        }
 
-        //move to postion
-        moveToPosition();
+        else
+        {
+            //rotates player
+            rotate();
 
+            //move to postion
+            moveToPosition();
+        }
         
     }
 
