@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DoorOpen.cs" />
      <Compile Include="Assets\Proximity.cs" />
      <Compile Include="Assets\Scripts\ArrowDamage.cs" />
      <Compile Include="Assets\Scripts\DontPassThrough.cs" />
@@ -56,6 +57,7 @@
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Gold_Pickup.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Health_Pickup.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Pickup.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Pickup\PickupKey.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Poison_Pickup.cs" />
      <Compile Include="Assets\Scripts\ListAdder.cs" />
      <Compile Include="Assets\Scripts\MeleeWeapon.cs" />
@@ -67,6 +69,7 @@
      <Compile Include="Assets\Scripts\RotateWeapons.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
      <Compile Include="Assets\Scripts\SwordDamage.cs" />
+     <Compile Include="Assets\Scripts\Tags.cs" />
      <Compile Include="Assets\Scripts\dan\HUDminiMapFollow.cs" />
      <Compile Include="Assets\Scripts\dan\MenuScript.cs" />
      <Compile Include="Assets\Scripts\dan\PauseMenuScript.cs" />
