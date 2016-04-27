@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class Inventory : MonoBehaviour {
+
+    public bool hasKey;
+
     private static int MAX_HEALTH = 100;
     private static int MAX_ARMOR = 100;
     
@@ -89,7 +92,17 @@ public class Inventory : MonoBehaviour {
         return MAX_ARMOR;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Key"))
+        {
+            other.gameObject.SetActive(false);
 
+            GameObject target = GameObject.Find("Door_B (1)");
+
+            target.SetActive(false);
+        }
+    }
 
 
 
