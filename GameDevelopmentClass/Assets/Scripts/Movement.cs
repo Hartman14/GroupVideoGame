@@ -1,41 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Movement : MonoBehaviour {
-    
-    
+public class Movement : MonoBehaviour
+{
+    public Camera playersCamera;
+
     public float movementSpeed = 20f;
     public float jumpSpeed = 200f;
-    float yRotation;
-    float xRotation;
-    float currentXRotation;
-    float currentYRotation;
-    public float GUISize = 150f;
-    float yRotationView = 50f;
-    float xRotationView = 50f;
-    public float rotationSmoothness = 10f;
+    public float sensitivity = 2;
+    public float gravity = 20.0F;
 
-    public GameObject playerCamera;
-    public GameObject player;
+    public float speedH = 6.0f;  //horizontal x axis
+    public float speedV = 4.0f;  //veritcal y axis
+
+    private float yaw = 0.0f;
+    private float pitch = 0.0f;
+    public int invertControls = 1;
+
+
     public CharacterController controller;
 
     Vector3 newPosition;
 
-    bool onGround = false;
+    //bool onGround = false;
 
     void Start()
     {
+       playersCamera =gameObject.GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
+        if ((Time.deltaTime == 0) || (gameObject.GetComponent<Inventory>().IsDead()))
+        {
 
-        //rotates player
-        rotatePlayer();
+        }
 
-        //move to postion
-        moveToPosition();
+        else
+        {
+            //rotates player
+            rotate();
 
+            //move to postion
+            moveToPosition();
+        }
+        
     }
 
     //moves character, all movements are opposite in game as the mape was creates backwards(ie: only way to compensate)
@@ -43,70 +53,60 @@ public class Movement : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            newPosition = playerCamera.transform.right * (Time.deltaTime * movementSpeed);
-            newPosition.y = 0f;
-            player.transform.position += newPosition;
+            newPosition = controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
+
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            newPosition = -1 * playerCamera.transform.right * (Time.deltaTime * movementSpeed);
-            newPosition.y = 0f;
-            player.transform.position += newPosition;
+            newPosition = -1 * controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            newPosition = playerCamera.transform.forward * (Time.deltaTime * movementSpeed);
-            newPosition.y = 0f;
-            player.transform.position += newPosition;
+            newPosition = controller.transform.forward * (Time.deltaTime * movementSpeed) * invertControls;
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            newPosition = -1 * playerCamera.transform.forward * (Time.deltaTime * movementSpeed);
-            newPosition.y = 0f;
-            player.transform.position += newPosition;
+            newPosition = -1 * controller.transform.forward * (Time.deltaTime * movementSpeed)* invertControls;
+            newPosition.y -= gravity * Time.deltaTime;
+            controller.Move(newPosition);
         }
+
+        
     }
 
     //rotates player
-    void rotatePlayer()
+    public void rotate()
     {
-        var recdown = new Rect(0f, 0f, Screen.width, GUISize);
-        var recup = new Rect(0, Screen.height - GUISize, Screen.width, GUISize);
-        var recleft = new Rect(0, 0, GUISize, Screen.height);
-        var recright = new Rect(Screen.width - GUISize, 0, GUISize, Screen.height);
+        //x axis rotation
+        //do not use deltatime multiplication to pause the mouse movements,  deltatime is not 1 and zero. its more like .02  ,,, Dan
+        yaw += speedH * Input.GetAxis("Mouse X") * sensitivity;
 
-        if (recup.Contains(Input.mousePosition))
-        {
-            xRotation = Mathf.SmoothDamp(currentXRotation, currentXRotation++, ref xRotationView, rotationSmoothness * Time.deltaTime);
-            xRotation = Mathf.Clamp(xRotation, -60f, 80f);
-            controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        //y axis pitch
+        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f));
+
+        if (pitch > 40)
+        { // prevents the player from pitching too far forward.
+            pitch = 40;
         }
-
-        if (recdown.Contains(Input.mousePosition))
-        {
-            xRotation = Mathf.SmoothDamp(currentXRotation, currentXRotation--, ref xRotationView, rotationSmoothness * Time.deltaTime);
-            xRotation = Mathf.Clamp(xRotation, -60f, 80f);
-            controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        if (pitch < -60)
+        {  //prevents the player from pitching too far up.
+            pitch = -60;
+            //print (pitch);
         }
+        //transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+       transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f); //dan
 
-        if (recright.Contains(Input.mousePosition))
-        {
-            //yRotation = Input.GetAxis("Mouse Y") * rotationSmoothness;
-            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation++, ref yRotationView, rotationSmoothness * Time.deltaTime);
+       playersCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);//dan
 
-            controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
-        }
-
-        if (recleft.Contains(Input.mousePosition))
-        {
-            //yRotation = Input.GetAxis("Mouse Y") * rotationSmoothness;
-            yRotation = Mathf.SmoothDamp(currentYRotation, currentYRotation--, ref yRotationView, rotationSmoothness * Time.deltaTime);
-
-            controller.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
-        }
     }
 
 }

@@ -3,21 +3,31 @@ using System.Collections;
 
 public class RangedWeapon : MonoBehaviour {
 
+    Enemy foe;
     public GameObject Bow;
     public GameObject Arrow;
     public GameObject ShotSpawn;
     GameObject projectile;
+    public GameObject BowArrow;
 
-    public Animation BowAttack;
+    private GameObject PlayerObj;
+
+    public Transform Player;
+    private Camera PlayersCamera;
+
+    public AnimationClip BowAttack;
+    public AnimationClip BowReload;
 
     public float Damage;
     public float ArrowSpeed;
 
     bool InAction = false;
+    bool ArrowFire = false;
+    bool needReload = false;
 
 	// Use this for initialization
 	void Start () {
-	
+       
 	}
 	
 	// Update is called once per frame
@@ -28,24 +38,55 @@ public class RangedWeapon : MonoBehaviour {
             Attack();
         }
 
-	}
+        if (!InAction )
+        {
+            InAction = false;
+        }
+
+        if (!GetComponent<Animation>().isPlaying && ArrowFire)
+        {
+            ArrowFire = false;
+            InAction = false;
+            BowArrow.SetActive(false);
+            needReload = true;
+            FireProjectile();
+        }
+
+        if (needReload)
+        {
+            Reload();
+        }
+        
+    }
 
     void Attack()
     {
-        InAction = true;
+        //InAction = true;
+        ArrowFire = true;
         GetComponent<Animation>().CrossFade(BowAttack.name);
-        if (!GetComponent<Animation>().isPlaying)
-        {
-            FireProjectile();
-            InAction = false;
-        }
+        
+        
     }
 
     void FireProjectile()
     {
-        projectile = Arrow;
-        GameObject ShootProjectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
-        ShootProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * ArrowSpeed * 200);
+		
+        projectile=(GameObject)Instantiate(Arrow,ShotSpawn.transform.position, ShotSpawn.gameObject.transform.rotation);
+        projectile.GetComponent<Rigidbody>().AddForce(-transform.right* ArrowSpeed * 100);
+        
+    }
+
+    public GameObject getProjectile()
+    {
+        return projectile;
+    }
+
+    void Reload()
+    {
+        BowArrow.SetActive(true);
+        needReload = false;
+        GetComponent<Animation>().CrossFade(BowReload.name);
+        
     }
 
 }
