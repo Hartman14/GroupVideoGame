@@ -39,27 +39,30 @@ public class MobScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.GetComponent<Inventory>().GetHealth() <= 0)
+        if (!gameObject.GetComponent<Enemy>().getDead())
         {
-            fixRotation();
-            GetComponent<Animation>().CrossFade(Dance.name);
-        }
-
-        else if (!GetComponent<Animation>().IsPlaying(attack.name))
-        {
-            if (!inRange() && (noticeRange <= (Vector3.Distance(transform.position, player.position))))
+            if (player.GetComponent<Inventory>().GetHealth() <= 0)
             {
-                chase();
+                fixRotation();
+                GetComponent<Animation>().CrossFade(Dance.name);
             }
 
-            else if (inRange())
+            else if (!GetComponent<Animation>().IsPlaying(attack.name))
             {
-                Attack();
-            }
+                if (!inRange() && (noticeRange <= (Vector3.Distance(transform.position, player.position))))
+                {
+                    chase();
+                }
 
-            else
-            {
-                GetComponent<Animation>().CrossFade(idle.name);
+                else if (inRange())
+                {
+                    Attack();
+                }
+
+                else
+                {
+                    GetComponent<Animation>().CrossFade(idle.name);
+                }
             }
         }
     }
