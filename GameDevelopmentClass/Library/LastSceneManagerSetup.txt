@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/FirstRoom.unity
+- path: Assets/Prefabs/Devin's Stuff/Level 3 WIP.unity
   isLoaded: 1
   isActive: 1
