@@ -12,7 +12,6 @@ public class MobScript : MonoBehaviour
     public float gravity = 20.0F;
 
     public CharacterController controller;
-    public GameObject Skeleton;
 
     Transform player;
 
@@ -86,6 +85,8 @@ public class MobScript : MonoBehaviour
 
    void Attack()
     {
+        transform.LookAt(player.position);
+        fixRotation();
         GetComponent<Animation>().CrossFade(attack.name);
     }
 
