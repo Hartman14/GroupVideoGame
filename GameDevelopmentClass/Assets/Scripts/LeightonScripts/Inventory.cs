@@ -26,6 +26,8 @@ public class Inventory : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        MAX_HEALTH = startingHealth;
+        MAX_ARMOR = 100;
         health = startingHealth;
         armor = startingArmor;
     }
@@ -111,7 +113,7 @@ public class Inventory : MonoBehaviour
     {
         if (ouch.gameObject.tag == "Dagger")
         {
-            TakeDamage((int)ouch.GetComponent<SwordDamage>().Damage);
+            TakeDamage((int)(ouch.GetComponent<SwordDamage>().Damage * ((float)10/armor)));
         }
 
         else if (ouch.gameObject.CompareTag("Key"))
