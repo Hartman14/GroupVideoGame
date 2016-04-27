@@ -5,13 +5,10 @@ public class ArrowDamage : MonoBehaviour {
 
     public float Damage = 30f;
 
-	// Use this for initialization
-	void Start () {
-	
+    /*
+	void OnBecameInvisible()
+	{
+		DestroyObject (this);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    */
 }

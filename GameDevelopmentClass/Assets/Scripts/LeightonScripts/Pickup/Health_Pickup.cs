@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Health_Pickup : MonoBehaviour {
 
-    [Range(0,100)]private double deltaHealth = 50;
+    [Range(0,100)]private int deltaHealth = 50;
 
     void OnCollisionEnter(Collision collision)
     {

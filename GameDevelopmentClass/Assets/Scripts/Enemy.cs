@@ -8,6 +8,7 @@ class Enemy : MonoBehaviour {
 
     public int health = 100;
    
+    int count = 0;
 
     void Update()
     {
@@ -28,6 +29,11 @@ class Enemy : MonoBehaviour {
     {
         Debug.Log("death triggered");
         Destroy(gameObject);
+    }
+
+    void DeathAnimationCaller()
+    {
+        GetComponent<Animation>().CrossFade(Death.name);
     }
 
     void OnTriggerEnter(Collider other)

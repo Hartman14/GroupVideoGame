@@ -37,17 +37,18 @@ public class MobScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
-       if (!inRange() && (noticeRange <= (Vector3.Distance(transform.position, player.position))))
-       {
-           chase();
-       }
+        if (!GetComponent<Animation>().IsPlaying(attack.name))
+        {
+            if (!inRange() && (noticeRange <= (Vector3.Distance(transform.position, player.position))))
+            {
+                chase();
+            }
 
-       else
-       {
-           GetComponent<Animation>().CrossFade(idle.name);
-       }
-         
+            else
+            {
+                GetComponent<Animation>().CrossFade(idle.name);
+            }
+        }
     }
     
     //---------------------------------------------------------------------------------------------------------------
@@ -57,6 +58,7 @@ public class MobScript : MonoBehaviour
     {
         if ((Vector3.Distance(transform.position, player.position) < AttackRange))
         {
+            Attack();
             return true;
         }
         else
@@ -66,6 +68,11 @@ public class MobScript : MonoBehaviour
     }
     
     //-------------------------------------------------------------------------------------------------
+
+   void Attack()
+    {
+        GetComponent<Animation>().CrossFade(attack.name);
+    }
 
     //chases player
     void chase()
