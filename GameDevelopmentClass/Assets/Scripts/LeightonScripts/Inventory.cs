@@ -3,6 +3,11 @@ using System.Collections;
 
 public class Inventory : MonoBehaviour {
 
+<<<<<<< HEAD
+=======
+    public bool hasKey;
+
+>>>>>>> refs/remotes/origin/master
     private static int MAX_HEALTH = 100;
     private static int MAX_ARMOR = 100;
     private int health = 72;
@@ -91,6 +96,7 @@ public class Inventory : MonoBehaviour {
         return MAX_ARMOR;
     }
 
+<<<<<<< HEAD
     public bool IsDead()
     {
         return Dead;
@@ -113,6 +119,18 @@ public class Inventory : MonoBehaviour {
 
         }
 
+=======
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Key"))
+        {
+            other.gameObject.SetActive(false);
+
+            GameObject target = GameObject.Find("Door_B (1)");
+
+            target.SetActive(false);
+        }
+>>>>>>> refs/remotes/origin/master
     }
 
 
