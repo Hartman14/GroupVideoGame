@@ -28,9 +28,6 @@ public class RangedWeapon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
        
-        //PlayerObj = GameObject.FindGameObjectWithTag("Player");
-        //PlayersCamera = PlayerObj.GetComponentInChildren<Camera>();
-       // Player = gameObject.transform;
 	}
 	
 	// Update is called once per frame
@@ -74,15 +71,7 @@ public class RangedWeapon : MonoBehaviour {
     void FireProjectile()
     {
 		
-	
-		//projectile = (GameObject)Instantiate(Arrow, Arrow.transform.position, Arrow.transform.rotation);
-
-		//projectile.transform.Rotate(Arrow.transform.rotation);
-		//projectile.GetComponent<Rigidbody>().AddForce(-transform.right* ArrowSpeed * 100);
-		//projectile=(GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Player.rotation);
-       projectile=(GameObject)Instantiate(Arrow,ShotSpawn.transform.position, ShotSpawn.gameObject.transform.rotation);
-        // projectile = (GameObject)Instantiate(Arrow, ShotSpawn.transform.position, Quaternion.identity);
-        //projectile.transform.Rotate(Player.rotation.z, Player.rotation.x + 270f, Player.rotation.y);
+        projectile=(GameObject)Instantiate(Arrow,ShotSpawn.transform.position, ShotSpawn.gameObject.transform.rotation);
         projectile.GetComponent<Rigidbody>().AddForce(-transform.right* ArrowSpeed * 100);
         
     }
