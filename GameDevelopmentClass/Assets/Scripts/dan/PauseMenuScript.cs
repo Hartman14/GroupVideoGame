@@ -107,7 +107,7 @@ public class PauseMenuScript : MonoBehaviour {
 
     public void showPassLevelScreen()
     {
-        
+        GameObject.Find("ResumeText").SetActive(false);
         pauseMenuText.text = "Passed Level";
         NextLevelGameButton.enabled = true;
         MenuShowing = true;
