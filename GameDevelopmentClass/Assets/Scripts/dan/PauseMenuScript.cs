@@ -18,10 +18,10 @@ public class PauseMenuScript : MonoBehaviour {
     public Text pauseMenuText;
 	void Start () {
 	pauseGame = false;
+        GameObject.Find("ResumeText").SetActive(true);
 
 
-	
-	}
+    }
 	
 	void OnApplicationPause(bool pauseStatus){
 		pauseGame = pauseStatus;
@@ -97,7 +97,7 @@ public class PauseMenuScript : MonoBehaviour {
 
     public void showDeathMenu()
     {
-
+        GameObject.Find("ResumeText").SetActive(false);
         pauseMenuText.text = "Died, try again";
         NextLevelGameButton.enabled = false;
         MenuShowing = true;
@@ -107,6 +107,7 @@ public class PauseMenuScript : MonoBehaviour {
 
     public void showPassLevelScreen()
     {
+        
         pauseMenuText.text = "Passed Level";
         NextLevelGameButton.enabled = true;
         MenuShowing = true;
