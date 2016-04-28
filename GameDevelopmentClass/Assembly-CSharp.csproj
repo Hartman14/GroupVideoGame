@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\DoorOpen.cs" />
+     <Compile Include="Assets\OptionsMenu.cs" />
      <Compile Include="Assets\Proximity.cs" />
      <Compile Include="Assets\Scripts\ArrowDamage.cs" />
      <Compile Include="Assets\Scripts\DontPassThrough.cs" />
@@ -73,9 +74,10 @@
      <Compile Include="Assets\Scripts\dan\HUDminiMapFollow.cs" />
      <Compile Include="Assets\Scripts\dan\MenuScript.cs" />
      <Compile Include="Assets\Scripts\dan\PauseMenuScript.cs" />
+     <Compile Include="Assets\Scripts\dan\SyncRotation.cs" />
      <Compile Include="Assets\Scripts\dan\hud.cs" />
      <Compile Include="Assets\Scripts\dan\move.cs" />
-     <Compile Include="Assets\SyncRotation.cs" />
+     <Compile Include="Assets\hasPassedLevel.cs" />
      <None Include="Assets\SkeletonData\animations.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

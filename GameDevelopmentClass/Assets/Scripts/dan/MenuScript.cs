@@ -1,6 +1,6 @@
 ﻿/*Daniel Anderson
  * apr 8, 2016 12:30a
- * 
+ * modified apr 28
  */
 using UnityEngine;
 using System.Collections;
@@ -19,11 +19,12 @@ public class MenuScript : MonoBehaviour {
 	public Canvas loadGame;   //canvas for loadgame view
 	public Canvas startMenu; //canvas for the main startmenu
 	public Dropdown loadGameDropDownMenu;
+    public Button OptionsSaveButton;
 
 	//level names for load screen, will be changed for name of saved games
 	public string[] levelNames = {"Main menu",
-								  "FirstRoom"
-									};
+								  "Level1","Level2","Level3","Level4",
+                                    };
 
 	public string[] savedGames;
 
@@ -122,6 +123,10 @@ public class MenuScript : MonoBehaviour {
 	
 	}
 
+    void optionsSavebuttonPressed()
+    {
+        print("saveButton");
+    }
 
 
 }
