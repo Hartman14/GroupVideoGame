@@ -19,6 +19,7 @@ public class MenuScript : MonoBehaviour {
 	public Canvas loadGame;   //canvas for loadgame view
 	public Canvas startMenu; //canvas for the main startmenu
 	public Dropdown loadGameDropDownMenu;
+    public Button OptionsSaveButton;
 
 	//level names for load screen, will be changed for name of saved games
 	public string[] levelNames = {"Main menu",
@@ -122,6 +123,10 @@ public class MenuScript : MonoBehaviour {
 	
 	}
 
+    void optionsSavebuttonPressed()
+    {
+        print("saveButton");
+    }
 
 
 }

@@ -18,3 +18,4 @@ C:\Users\dan\Documents\GitHub\GroupVideoGame\GameDevelopmentClass\Temp\bin\Debug
 C:\Users\dan\Documents\GitHub\GroupVideoGame\GameDevelopmentClass\Temp\bin\Debug\UnityEngine.UI.xml
 C:\Users\dan\Documents\GitHub\GroupVideoGame\GameDevelopmentClass\Temp\bin\Debug\UnityEngine.Networking.xml
 C:\Users\dan\Documents\GitHub\GroupVideoGame\GameDevelopmentClass\obj\Debug\Assembly-CSharp.pdb
+C:\Users\dan\Documents\GitHub\GroupVideoGame\GameDevelopmentClass\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
