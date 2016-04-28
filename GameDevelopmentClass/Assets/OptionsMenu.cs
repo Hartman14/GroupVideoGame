@@ -5,16 +5,19 @@ public class OptionsMenu : MonoBehaviour {
 
     public Canvas OptionsView;
     public Toggle InvertControls;
+    public Toggle MiniMapToggle;
     private string sliderName = "sensitivityValue";
     public Slider Sensitivity;
     public Text sliderText;
-   
+
+
+    public string minimapName = "minimap";  //only for consistenct for saving to playerpref
 	// Use this for initialization
 	void Start () {
       
         
-        Sensitivity.minValue = 10;
-        Sensitivity.maxValue = 100;
+        Sensitivity.minValue = 1;
+        Sensitivity.maxValue = 3;
        if(  PlayerPrefs.HasKey(sliderName)){
             float slidervalue = PlayerPrefs.GetFloat(sliderName);
            // print("PlayerPrefs sensitivity value "+ slidervalue);
@@ -22,9 +25,55 @@ public class OptionsMenu : MonoBehaviour {
             Sensitivity.value = slidervalue;
       }
         setInvertControlsToggle();
-
+        setMiniMapToggle();
+       
 
     }
+
+    static void SetBool(string name, bool value)
+    {
+
+
+        PlayerPrefs.SetInt(name, value ? 1 : 0);
+
+    }
+    static bool GetBool(string name)
+    {
+        return PlayerPrefs.GetInt(name) == 1 ? true : false;
+    }
+
+
+    public void minimapsToggle()
+    {
+        bool value = MiniMapToggle.isOn;
+        if (value)
+        {
+            Debug.Log("if minimap toggle value: " + value);
+            PlayerPrefs.SetInt("minimap", 1);
+        }
+        else
+        {
+            Debug.Log("else minimap toggle value: " + value);
+            PlayerPrefs.SetInt(minimapName, 0);
+        }
+        PlayerPrefs.Save();
+    }
+    // 1 for true mini map on
+    public void setMiniMapToggle()
+    {
+        if (PlayerPrefs.GetInt(minimapName) == 1)
+        {
+            Debug.Log("if minimap value playerpref: = true");
+            MiniMapToggle.isOn = true;
+        }
+        else
+        {
+            Debug.Log("if minimap value playerpref: = false");
+            MiniMapToggle.isOn = false;
+        }
+
+    }
+
 
     // -1 is true for inverted controls
     public void setInvertControlsToggle()
