@@ -33,6 +33,7 @@ public class MenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //PlayerPrefs.DeleteAll();  //clear all player preferences ie cookies
 		//firstScene = "testscene";
 		HideMenus ();
 
