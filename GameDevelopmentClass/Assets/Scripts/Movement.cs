@@ -27,7 +27,13 @@ public class Movement : MonoBehaviour
     void Start()
     {
        playersCamera =gameObject.GetComponentInChildren<Camera>();
-        sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
+     
+        if (PlayerPrefs.HasKey("sensitivityValue")){
+            sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
+        }else{
+            PlayerPrefs.SetFloat("sensitivityValue", 2f);
+        }
+     
     }
 
     // Update is called once per frame
@@ -94,7 +100,7 @@ public class Movement : MonoBehaviour
         yaw += speedH * Input.GetAxis("Mouse X") * sensitivity;
 
         //y axis pitch
-        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f) * PlayerPrefs.GetInt("invertControls"));
+        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f));
 
         if (pitch > 40)
         { // prevents the player from pitching too far forward.
