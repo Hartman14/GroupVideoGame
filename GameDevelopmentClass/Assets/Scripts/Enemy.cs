@@ -6,6 +6,8 @@ class Enemy : MonoBehaviour {
 
     public AnimationClip Death;
 
+    public GameObject Dagger;
+
     public int health = 100;
    
     int count = 0;
@@ -20,6 +22,7 @@ class Enemy : MonoBehaviour {
             {
                 if (!Died)
                 {
+                    DestroyWeapons();
                     GetComponent<Animation>().CrossFade(Death.name);
                     Died = true;
                 }
@@ -65,6 +68,11 @@ class Enemy : MonoBehaviour {
         {
 
         }
+    }
+
+    void DestroyWeapons()
+    {
+        Destroy(Dagger);
     }
 
     public bool getDead()
