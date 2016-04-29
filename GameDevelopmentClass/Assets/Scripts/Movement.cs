@@ -26,23 +26,42 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+<<<<<<< HEAD
+       
+=======
        playersCamera =gameObject.GetComponentInChildren<Camera>();
+     
+        if (PlayerPrefs.HasKey("sensitivityValue")){
+            sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
+        }else{
+            PlayerPrefs.SetFloat("sensitivityValue", 2f);
+        }
+     
+>>>>>>> refs/remotes/origin/master
     }
 
     // Update is called once per frame
     void Update()
     {
+        if ((Time.deltaTime == 0) || (gameObject.GetComponent<Inventory>().IsDead()))
+        {
 
-        //rotates player
-        rotate();
+        }
 
-        //move to postion
-        moveToPosition();
+        else
+        {
+            //rotates player
+            rotate();
 
+            //move to postion
+            moveToPosition();
+        }
         
     }
 
-    //moves character, all movements are opposite in game as the mape was creates backwards(ie: only way to compensate)
+
+
+    //moves character
     void moveToPosition()
     {
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -82,10 +101,14 @@ public class Movement : MonoBehaviour
     {
         //x axis rotation
         //do not use deltatime multiplication to pause the mouse movements,  deltatime is not 1 and zero. its more like .02  ,,, Dan
-        yaw += speedH * Input.GetAxis("Mouse X") * sensitivity;
+        yaw += speedH * Input.GetAxis("Mouse X") * (sensitivity * .55f);
 
         //y axis pitch
+<<<<<<< HEAD
+        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .2f));
+=======
         pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f));
+>>>>>>> refs/remotes/origin/master
 
         if (pitch > 40)
         { // prevents the player from pitching too far forward.
