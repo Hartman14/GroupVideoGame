@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
        playersCamera =gameObject.GetComponentInChildren<Camera>();
+        sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
     }
 
     // Update is called once per frame
@@ -47,6 +48,8 @@ public class Movement : MonoBehaviour
         }
         
     }
+
+
 
     //moves character, all movements are opposite in game as the mape was creates backwards(ie: only way to compensate)
     void moveToPosition()
@@ -91,7 +94,7 @@ public class Movement : MonoBehaviour
         yaw += speedH * Input.GetAxis("Mouse X") * sensitivity;
 
         //y axis pitch
-        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f));
+        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f) * PlayerPrefs.GetInt("invertControls"));
 
         if (pitch > 40)
         { // prevents the player from pitching too far forward.

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Devin's Stuff/Final Boss Area.unity
+- path: Assets/Scenes/archesToTheExcess incomplete.unity
   isLoaded: 1
   isActive: 1
