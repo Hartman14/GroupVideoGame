@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/FirstRoomMazeCOMPLETEwithLighting.unity
+=======
+- path: Assets/Scenes/MainMenu.unity
+>>>>>>> refs/remotes/origin/master
   isLoaded: 1
   isActive: 1
