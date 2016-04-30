@@ -22,7 +22,8 @@ public class MobScript : MonoBehaviour
     public AnimationClip running;
     public AnimationClip attack;
     public AnimationClip idle;
-    
+    public AnimationClip Dance;
+
 
     //-----------------------------------------------------------------------------------------------------------
 
@@ -37,16 +38,30 @@ public class MobScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GetComponent<Animation>().IsPlaying(attack.name))
+        if (!gameObject.GetComponent<Enemy>().getDead())
         {
-            if (!inRange() && (noticeRange <= (Vector3.Distance(transform.position, player.position))))
+            if (player.GetComponent<Inventory>().GetHealth() <= 0)
             {
-                chase();
+                fixRotation();
+                GetComponent<Animation>().CrossFade(Dance.name);
             }
 
-            else
+            else if (!GetComponent<Animation>().IsPlaying(attack.name))
             {
-                GetComponent<Animation>().CrossFade(idle.name);
+                if (!inRange() && (noticeRange <= (Vector3.Distance(transform.position, player.position))))
+                {
+                    chase();
+                }
+
+                else if (inRange())
+                {
+                    Attack();
+                }
+
+                else
+                {
+                    GetComponent<Animation>().CrossFade(idle.name);
+                }
             }
         }
     }
@@ -58,7 +73,6 @@ public class MobScript : MonoBehaviour
     {
         if ((Vector3.Distance(transform.position, player.position) < AttackRange))
         {
-            Attack();
             return true;
         }
         else
@@ -71,6 +85,8 @@ public class MobScript : MonoBehaviour
 
    void Attack()
     {
+        transform.LookAt(player.position);
+        fixRotation();
         GetComponent<Animation>().CrossFade(attack.name);
     }
 
@@ -78,11 +94,16 @@ public class MobScript : MonoBehaviour
     void chase()
     {
         transform.LookAt(player.position);
+        fixRotation();
         newPosition = controller.transform.forward * (Time.deltaTime * speed);
         newPosition.y -= gravity * Time.deltaTime;
         controller.Move(newPosition);
         GetComponent<Animation>().CrossFade(running.name);
     }
     
+    void fixRotation()
+    {
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f); ;
+    }
     
 }

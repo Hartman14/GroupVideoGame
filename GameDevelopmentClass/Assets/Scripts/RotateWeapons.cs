@@ -17,12 +17,18 @@ public class RotateWeapons : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (gameObject.GetComponent<Inventory>().IsDead())
         {
-            Rotate();
+            //Yup you Dead alright
         }
-        isActive();
 
+        else {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                Rotate();
+            }
+            isActive();
+        }
 	}
 
     void Rotate()

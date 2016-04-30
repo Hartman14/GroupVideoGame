@@ -11,44 +11,55 @@ public class PauseMenuScript : MonoBehaviour {
 	public Canvas pauseMenu; //quit menu canvas
 	public Button quitGameButton;
 	public Button ResumeButton;
-	public Button SaveGameButton;
+	public Button NextLevelGameButton;
 	public Button RestartLevelButton;
-	// Use this for initialization
+    // Use this for initialization
 
-
+    public Text pauseMenuText;
 	void Start () {
 	pauseGame = false;
+        GameObject.Find("ResumeText").SetActive(true);
 
 
+    }
 	
-	}
-	void onGUI(){
-		if (pauseGame) {
-			GUI.Label (new Rect (100, 100, 50, 30), "Game paused");
-		}
-	}
 	void OnApplicationPause(bool pauseStatus){
 		pauseGame = pauseStatus;
 	}
 			
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown ("p")) {
-			print ("test");
-			if (true) {
-				pauseGame = !pauseGame;
-			}
-			if (pauseGame == true) {	
-				//GameObject.Find ("Main Camera").GetComponent(MouseLook).enabled = false;	
-				showPauseMenu1 ();
-			} else {
-				//GameObject.Find ("Main Camera").GetComponent(MouseLook).enabled = true;
-				resume ();
-			}
-		}
-		if (!pauseGame) {
-			resume ();
-		}
+
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().IsDead())
+        {
+            
+            showDeathMenu(); 
+        }
+
+        else {
+            if (Input.GetKeyDown("p") || Input.GetKeyUp("escape"))
+            {
+                //print("test");
+                pauseMenuText.text = "Paused";
+                if (true)
+                {
+                    pauseGame = !pauseGame;
+                }
+                if (pauseGame == true)
+                {
+                   
+                    showPauseMenu1();
+                }
+                else {
+                    
+                    resume();
+                }
+            }
+            if (!pauseGame)
+            {
+                resume();
+            }
+        }
 	}//end of update
 
 
@@ -76,7 +87,30 @@ public class PauseMenuScript : MonoBehaviour {
 		SceneManager.LoadScene ("MainMenu");
 	}
 
-	public void saveGame(){
+	public void NextLevelButton(){
+        int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextLevel);
+      //  print("next level " +nextLevel);
 
-	}
+
+    }
+
+    public void showDeathMenu()
+    {
+        GameObject.Find("ResumeText").SetActive(false);
+        pauseMenuText.text = "Died, try again";
+        NextLevelGameButton.enabled = false;
+        MenuShowing = true;
+        pauseMenu.enabled = true;
+        //print ("Yup you Dead bro, better luck next time"); //yours truely, Jordan
+    }
+
+    public void showPassLevelScreen()
+    {
+        GameObject.Find("ResumeText").SetActive(false);
+        pauseMenuText.text = "Passed Level";
+        NextLevelGameButton.enabled = true;
+        MenuShowing = true;
+        pauseMenu.enabled = true;
+    }
 }

@@ -7,15 +7,15 @@ public class MeleeWeapon : MonoBehaviour {
 
     public AnimationClip SwordAttack;
 
-
     public float Damage;
 
     bool InAction = false;
+    bool Enabled = false;
 
     // Use this for initialization
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

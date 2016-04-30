@@ -1,43 +1,54 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
 
     public bool hasKey;
 
     private static int MAX_HEALTH = 100;
     private static int MAX_ARMOR = 100;
-    
     private int health = 72;
     private int score = 0;
 
-    [Range(0, 100)] private int armor;
-    
-    private GameObject currentWeapon;
-    private GameObject[] weapons;
-    
-   [Range(0,100)] private int arrows;
-    
+    public int startingHealth = 100;
+    public int startingArmor = 100;
 
-	// Use this for initialization
-	void Start () {
-        health = 100;
-        armor = 100;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+    [Range(0, 100)]
+    private int armor;
+
+    public GameObject weapons;
+
+    bool Dead = false;
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // Use this for initialization
+    void Start()
+    {
+        MAX_HEALTH = startingHealth;
+        MAX_ARMOR = 100;
+        health = startingHealth;
+        armor = startingArmor;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (health <= 0)
+        {
+            health = 0;
+            Die();
+        }
+
+    }
 
     public void ChangeHealth(int delta)
     {
         health += delta;
-        if(health <= 0)
-        {
-            this.Die();
-        }
-        else if(health > MAX_HEALTH)
+
+        if (health > MAX_HEALTH)
         {
             health = MAX_HEALTH;
         }
@@ -45,7 +56,9 @@ public class Inventory : MonoBehaviour {
 
     private void Die()
     {
-        Destroy(gameObject);
+        Dead = true;
+        gameObject.GetComponent<RotateWeapons>().StopAllCoroutines();
+        Destroy(weapons);
     }
 
     public void AddScore(int score)
@@ -61,11 +74,6 @@ public class Inventory : MonoBehaviour {
         this.armor += armor;
     }
 
-    public void ChangeWeapon(int index)
-    {
-        currentWeapon = weapons[index];
-        //this.EquipWeapon...
-    }
 
     public int GetHealth()   //current health
     {
@@ -92,18 +100,36 @@ public class Inventory : MonoBehaviour {
         return MAX_ARMOR;
     }
 
-    void OnTriggerEnter(Collider other)
+    public bool IsDead()
     {
-        if (other.gameObject.CompareTag("Key"))
+        return Dead;
+    }
+
+    void TakeDamage(int incoming)
+    {
+        health -= incoming;
+    }
+
+    void OnTriggerEnter(Collider ouch)
+    {
+        if (ouch.gameObject.tag == "Dagger")
         {
-            other.gameObject.SetActive(false);
+            TakeDamage((int)(ouch.GetComponent<SwordDamage>().Damage * ((float)10/armor)));
+        }
+
+        else if (ouch.gameObject.tag == "Key")
+        {
+            ouch.gameObject.SetActive(false);
 
             GameObject target = GameObject.Find("Door_B (1)");
 
             target.SetActive(false);
         }
+
+        else
+        {
+
+        }
+
     }
-
-
-
 }
