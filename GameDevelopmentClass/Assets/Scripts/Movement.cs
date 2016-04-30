@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 
     public float movementSpeed = 20f;
     public float jumpSpeed = 200f;
-    public float sensitivity = 2;
+    public float sensitivity = 2f;
     public float gravity = 20.0F;
 
     public float speedH = 6.0f;  //horizontal x axis
@@ -26,18 +26,18 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-<<<<<<< HEAD
-       
-=======
-       playersCamera =gameObject.GetComponentInChildren<Camera>();
-     
-        if (PlayerPrefs.HasKey("sensitivityValue")){
+        playersCamera = gameObject.GetComponentInChildren<Camera>();
+
+        if (PlayerPrefs.HasKey("sensitivityValue"))
+        {
             sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
-        }else{
-            PlayerPrefs.SetFloat("sensitivityValue", 2f);
         }
-     
->>>>>>> refs/remotes/origin/master
+        else
+        {
+            PlayerPrefs.SetFloat("sensitivityValue", 2f);
+            sensitivity = 2f;
+        }
+
     }
 
     // Update is called once per frame
@@ -56,12 +56,12 @@ public class Movement : MonoBehaviour
             //move to postion
             moveToPosition();
         }
-        
+
     }
 
 
 
-    //moves character
+    //moves character, all movements are opposite in game as the mape was creates backwards(ie: only way to compensate)
     void moveToPosition()
     {
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -88,12 +88,12 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            newPosition = -1 * controller.transform.forward * (Time.deltaTime * movementSpeed)* invertControls;
+            newPosition = -1 * controller.transform.forward * (Time.deltaTime * movementSpeed) * invertControls;
             newPosition.y -= gravity * Time.deltaTime;
             controller.Move(newPosition);
         }
 
-        
+
     }
 
     //rotates player
@@ -101,14 +101,10 @@ public class Movement : MonoBehaviour
     {
         //x axis rotation
         //do not use deltatime multiplication to pause the mouse movements,  deltatime is not 1 and zero. its more like .02  ,,, Dan
-        yaw += speedH * Input.GetAxis("Mouse X") * (sensitivity * .55f);
+        yaw += speedH * Input.GetAxis("Mouse X") * sensitivity;
 
         //y axis pitch
-<<<<<<< HEAD
-        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .2f));
-=======
         pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f));
->>>>>>> refs/remotes/origin/master
 
         if (pitch > 40)
         { // prevents the player from pitching too far forward.
@@ -120,9 +116,9 @@ public class Movement : MonoBehaviour
             //print (pitch);
         }
         //transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-       transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f); //dan
+        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f); //dan
 
-       playersCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);//dan
+        playersCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);//dan
 
     }
 
