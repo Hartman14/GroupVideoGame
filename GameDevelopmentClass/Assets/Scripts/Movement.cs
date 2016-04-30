@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
             sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
         }else{
             PlayerPrefs.SetFloat("sensitivityValue", 2f);
+             float sensitivity = 2;
         }
      
     }
@@ -44,7 +45,6 @@ public class Movement : MonoBehaviour
     {
         if ((Time.deltaTime == 0) || (gameObject.GetComponent<Inventory>().IsDead()))
         {
-
         }
 
         else
@@ -104,7 +104,7 @@ public class Movement : MonoBehaviour
 
         //y axis pitch
         pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .2f));
-        pitch = pitch - (speedV * Input.GetAxis("Mouse Y") * invertControls * (sensitivity * .5f));
+
 
 
         if (pitch > 40)
