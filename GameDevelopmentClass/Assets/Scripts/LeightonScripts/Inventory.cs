@@ -117,7 +117,7 @@ public class Inventory : MonoBehaviour
             TakeDamage((int)(ouch.GetComponent<SwordDamage>().Damage * ((float)10/armor)));
         }
 
-        else if (ouch.gameObject.CompareTag("Key"))
+        else if (ouch.gameObject.tag == "Key")
         {
             ouch.gameObject.SetActive(false);
 
