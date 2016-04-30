@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
             sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
         }else{
             PlayerPrefs.SetFloat("sensitivityValue", 2f);
-             float sensitivity = 2;
+              sensitivity = 2;
         }
      
     }
