@@ -61,6 +61,8 @@
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\PickupKey.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Poison_Pickup.cs" />
      <Compile Include="Assets\Scripts\ListAdder.cs" />
+     <Compile Include="Assets\Scripts\ListAdder_boss.cs" />
+     <Compile Include="Assets\Scripts\ListAdder_caster.cs" />
      <Compile Include="Assets\Scripts\MeleeWeapon.cs" />
      <Compile Include="Assets\Scripts\MobScript.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
@@ -77,6 +79,8 @@
      <Compile Include="Assets\Scripts\dan\SyncRotation.cs" />
      <Compile Include="Assets\Scripts\dan\hud.cs" />
      <Compile Include="Assets\Scripts\dan\move.cs" />
+     <Compile Include="Assets\Scripts\spawnCaster.cs" />
+     <Compile Include="Assets\Scripts\spawnboss.cs" />
      <Compile Include="Assets\hasPassedLevel.cs" />
      <None Include="Assets\SkeletonData\animations.txt" />
  <Reference Include="UnityEngine.UI">

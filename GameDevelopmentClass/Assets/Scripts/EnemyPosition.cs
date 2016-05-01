@@ -12,19 +12,48 @@ public class EnemyPosition : MonoBehaviour
         getList(L_num).Add(newVec);
     }
 
+    //adds vector3 to specified list for caster spawns
+    public static void listAdd_caster(Vector3 newVec, int L_num)
+    {
+        getList_caster(L_num).Add(newVec);
+    }
 
-    //returns the list of all the Vector3s that we want spawns at
+    //adds vector3 to specified list for bosses
+    public static void listAdd_boss(Vector3 newVec, int L_num)
+    {
+        getList_boss(L_num).Add(newVec);
+    }
+
+
+    //returns the list of all the Vector3s that we want enemys to spawns at
     public static List<Vector3> getSpawns(int L_num)
     {
         Debug.Log("the l number is " + L_num);
         return getList(L_num);
     }
 
+
+    //returns the list of all the Vector3s that we want casters to spawns at
+    public static List<Vector3> getSpawns_caster(int L_num)
+    {
+        Debug.Log("the l number is " + L_num);
+        return getList_caster(L_num);
+    }
+
+    //returns the list of all the Vector3s that we want bosses to spawns at
+    public static List<Vector3> getSpawns_boss(int L_num)
+    {
+        Debug.Log("the l number is " + L_num);
+        return getList_boss(L_num);
+    }
+
+
+
     //checks the number that is passed and returnes a refference to the 
     //specific "enemypos" list.
     private static List<Vector3> getList(int x)
     {
-        //switch is used to test all of the numbers 1 - 20 for the sits that are supported
+        //switch is used to test all of the numbers 1 - 28 for the sits that are supported
         switch (x)
         {
             case 1:
@@ -92,6 +121,46 @@ public class EnemyPosition : MonoBehaviour
         return null;
     }
 
+     private static List<Vector3> getList_caster(int x)
+    {
+        //switch is used to test all of the numbers 1-4 for the sits that are supported
+        switch (x)
+        {
+            case 1:
+                return casterpos1;
+            case 2:
+                return casterpos2;
+            case 3:
+                return casterpos3;
+            case 4:
+                return casterpos4;
+            default:
+                Debug.Log("int passed is a non-supported int");
+                break;
+        }
+        Debug.Log("the returned value is null");
+        return null;
+    }
+
+
+     private static List<Vector3> getList_boss(int x)
+     {
+         //switch is used to test all of the numbers 1-2 for the sits that are supported
+         switch (x)
+         {
+             case 1:
+                 return bosspos1;
+             case 2:
+                 return bosspos2;
+             default:
+                 Debug.Log("int passed is a non-supported int");
+                 break;
+         }
+         Debug.Log("the returned value is null");
+         return null;
+     }
+
+
 
     //creates all of the lists that would be called by the various spawn points
     static List<Vector3> enemypos0 = new List<Vector3>();
@@ -123,6 +192,16 @@ public class EnemyPosition : MonoBehaviour
     static List<Vector3> enemypos26 = new List<Vector3>();
     static List<Vector3> enemypos27 = new List<Vector3>();
     static List<Vector3> enemypos28 = new List<Vector3>();
+
+    //caster skeliton spawnpoints
+    static List<Vector3> casterpos1 = new List<Vector3>();
+    static List<Vector3> casterpos2 = new List<Vector3>();
+    static List<Vector3> casterpos3 = new List<Vector3>();
+    static List<Vector3> casterpos4 = new List<Vector3>();
+
+    //boss spawnpoints
+    static List<Vector3> bosspos1 = new List<Vector3>();
+    static List<Vector3> bosspos2 = new List<Vector3>();
 
 }
 
