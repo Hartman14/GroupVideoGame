@@ -4,6 +4,11 @@ using System.Collections;
 public class RangedWeapon : MonoBehaviour {
 
     Enemy foe;
+
+
+    public AudioClip launchArrow;
+    private AudioSource arrowSound;
+
     public GameObject Bow;
     public GameObject Arrow;
     public GameObject ShotSpawn;
@@ -27,14 +32,15 @@ public class RangedWeapon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       
-	}
+        arrowSound = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
         if(Input.GetKeyDown(KeyCode.Mouse0) && !InAction)
         {
+            arrowSound.PlayOneShot(launchArrow, 1f);
             Attack();
         }
 
