@@ -12,9 +12,8 @@ public class Inventory : MonoBehaviour
     private int score = 0;
 
     public int startingHealth = 100;
-    public int startingArmor = 100;
-
-    [Range(0, 100)]
+    public int startingArmor = 10;
+    
     private int armor;
 
     public GameObject weapons;
@@ -114,10 +113,10 @@ public class Inventory : MonoBehaviour
     {
         if (ouch.gameObject.tag == "Dagger")
         {
-            TakeDamage((int)(ouch.GetComponent<SwordDamage>().Damage * ((float)10/armor)));
+            TakeDamage((int)(ouch.gameObject.GetComponent<SwordDamage>().Damage * ((float)10/armor)));
         }
 
-        else if (ouch.gameObject.tag == "Key")
+        if (ouch.gameObject.tag == "Key")
         {
             ouch.gameObject.SetActive(false);
 
@@ -126,10 +125,28 @@ public class Inventory : MonoBehaviour
             target.SetActive(false);
         }
 
-        else if(ouch.gameObject.tag == "Door")
+        if(ouch.gameObject.tag == "Door")
         {
             ouch.gameObject.SetActive(false);
         }
 
+        if(ouch.gameObject.tag == "Fireball")
+        {
+            TakeDamage((int)(60 * ((float)10 / armor)));
+            try {
+                Destroy(ouch.GetComponentInParent<GameObject>());
+            }
+
+            catch
+            {
+
+            }
+            
+        }
+
+        else
+        {
+
+        }
     }
 }
