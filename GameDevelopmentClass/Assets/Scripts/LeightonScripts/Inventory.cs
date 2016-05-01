@@ -143,6 +143,11 @@ public class Inventory : MonoBehaviour
             }
             
         }
+        if(ouch.gameObject.tag == "levelchange")
+        {
+            var nextlvl = ouch.gameObject.GetComponent<Next_Level>();
+            nextlvl.ChangeLevel();
+        }
 
         else
         {
