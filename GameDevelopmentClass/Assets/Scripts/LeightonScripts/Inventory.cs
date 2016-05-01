@@ -126,9 +126,9 @@ public class Inventory : MonoBehaviour
             target.SetActive(false);
         }
 
-        else
+        else if(ouch.gameObject.tag == "Door")
         {
-
+            ouch.gameObject.SetActive(false);
         }
 
     }
