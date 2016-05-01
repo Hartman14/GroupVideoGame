@@ -11,11 +11,18 @@ public class MobScript : MonoBehaviour
     public float noticeRange = 10f;
     public float gravity = 20.0F;
 
+    public bool Mage = false;
+
     public CharacterController controller;
 
     Transform player;
 
     private int stunDuration;
+
+    GameObject projectile;
+
+    public GameObject ShotSpawn;
+    public GameObject fireball;
 
     Vector3 newPosition;
 
@@ -88,6 +95,10 @@ public class MobScript : MonoBehaviour
         transform.LookAt(player.position);
         fixRotation();
         GetComponent<Animation>().CrossFade(attack.name);
+        if (Mage)
+        {
+            FireBall();
+        }
     }
 
     //chases player
@@ -106,4 +117,10 @@ public class MobScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f); ;
     }
     
+    void FireBall()
+    {
+        projectile = (GameObject)Instantiate(fireball, ShotSpawn.transform.position, ShotSpawn.gameObject.transform.rotation);
+        projectile.transform.LookAt(player.position);
+    }
+
 }
