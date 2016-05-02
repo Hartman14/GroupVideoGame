@@ -3,6 +3,13 @@ using System.Collections;
 using System;
 
 class Enemy : MonoBehaviour {
+    //franklin
+    public AudioClip hurtclip;
+    private AudioSource hurtSound;
+
+    public AudioClip deathscream;
+    private AudioSource deathsound;
+
 
     public AnimationClip Death;
 
@@ -14,10 +21,19 @@ class Enemy : MonoBehaviour {
 
     bool Died = false;
 
+    void Start()
+    {
+        deathsound = GetComponent<AudioSource>();
+        hurtSound = GetComponent<AudioSource>();
+    }
     void Update()
     {
         if (health <= 0)
         {
+            if (!deathsound.isPlaying && Time.time >= 1)
+            {
+                deathsound.PlayOneShot(deathscream, 1f);
+            }
             if (!GetComponent<Animation>().IsPlaying(Death.name))
             {
                 if (!Died)
@@ -55,13 +71,17 @@ class Enemy : MonoBehaviour {
     {
         if(other.gameObject.tag == "Arrow")
         {
+            hurtSound.PlayOneShot(hurtclip, 10f);
             damage((int)other.GetComponent<ArrowDamage>().Damage);
             Destroy(other.gameObject);
+            Debug.Log("arrow hit enemy");
         }
 
         if (other.gameObject.tag == "Sword")
         {
+            hurtSound.PlayOneShot(hurtclip, 10f);
             damage((int)other.GetComponent<SwordDamage>().Damage);
+            Debug.Log("sword hit enemy");
         }
 
         else
