@@ -60,17 +60,17 @@ public class Inventory : MonoBehaviour
         Destroy(weapons);
     }
 
-    public void AddScore(int score)
+    public void AddScore(int incoming)
     {
         if (score > 0)
         {
-            this.score += score;
+            score += incoming;
         }
     }
 
-    public void AddArmor(int armor)
+    public void AddArmor(int incoming)
     {
-        this.armor += armor;
+        armor += incoming;
     }
 
 
@@ -143,6 +143,39 @@ public class Inventory : MonoBehaviour
             }
             
         }
+
+        if (ouch.gameObject.tag == "Health")
+        {
+            ChangeHealth(ouch.GetComponent<Health>().deltaHealth);
+            ouch.gameObject.SetActive(false);
+        }
+
+        if (ouch.gameObject.tag == "Poison")
+        {
+            ChangeHealth(ouch.GetComponent<Poison>().deltaHealth);
+            ouch.gameObject.SetActive(false);
+        }
+
+        if (ouch.gameObject.tag == "Gold")
+        {
+            AddScore(ouch.GetComponentInParent<Gold>().deltaScore);
+            
+            try
+            {
+                Destroy(ouch.GetComponentInParent<GameObject>());
+            }
+            catch
+            {
+
+            }
+        }
+
+        if (ouch.gameObject.tag == "Armor")
+        {
+            AddArmor(ouch.GetComponent<Armor>().deltaArmorLevel);
+            ouch.gameObject.SetActive(false);
+        }
+
 
         else
         {
