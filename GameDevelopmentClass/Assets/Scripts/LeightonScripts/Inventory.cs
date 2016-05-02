@@ -171,16 +171,8 @@ public class Inventory : MonoBehaviour
 
         if (ouch.gameObject.tag == "Gold")
         {
-            AddScore(ouch.GetComponentInParent<Gold>().deltaScore);
-            
-            try
-            {
-                Destroy(ouch.GetComponentInParent<GameObject>());
-            }
-            catch
-            {
-
-            }
+            AddScore(ouch.GetComponent<Gold>().deltaScore);
+            ouch.gameObject.SetActive(false);
         }
 
         if (ouch.gameObject.tag == "Armor")
