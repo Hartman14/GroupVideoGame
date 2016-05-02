@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/FirstRoomMazeCOMPLETEwithLighting.unity
+- path: Assets/Scenes/Devin's Stuff/Final Boss Area.unity
   isLoaded: 1
   isActive: 1
