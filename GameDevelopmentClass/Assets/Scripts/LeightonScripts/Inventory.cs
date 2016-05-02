@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Inventory : MonoBehaviour
 {
-
+    public AudioClip audioHurtPlayer;
+    private AudioSource audioSrc;
     public bool hasKey;
 
     private static int MAX_HEALTH = 100;
@@ -29,6 +30,8 @@ public class Inventory : MonoBehaviour
         MAX_ARMOR = 100;
         health = startingHealth;
         armor = startingArmor;
+        audioSrc = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -114,6 +117,11 @@ public class Inventory : MonoBehaviour
         if (ouch.gameObject.tag == "Dagger")
         {
             TakeDamage((int)(ouch.gameObject.GetComponent<SwordDamage>().Damage * ((float)10/armor)));
+            if (!audioSrc.isPlaying) // better but animation time and sound time differ
+            {
+                audioSrc.PlayOneShot(audioHurtPlayer, .2f);
+            }
+
         }
 
         if (ouch.gameObject.tag == "Key")
@@ -163,16 +171,8 @@ public class Inventory : MonoBehaviour
 
         if (ouch.gameObject.tag == "Gold")
         {
-            AddScore(ouch.GetComponentInParent<Gold>().deltaScore);
-            
-            try
-            {
-                Destroy(ouch.GetComponentInParent<GameObject>());
-            }
-            catch
-            {
-
-            }
+            AddScore(ouch.GetComponent<Gold>().deltaScore);
+            ouch.gameObject.SetActive(false);
         }
 
         if (ouch.gameObject.tag == "Armor")
