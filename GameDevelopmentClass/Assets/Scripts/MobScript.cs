@@ -4,6 +4,9 @@ using System.Collections;
 public class MobScript : MonoBehaviour
 {
 
+
+    public AudioClip attackscream;
+    private AudioSource attacksound;
     //variables
 
     public float speed = 10f;
@@ -37,6 +40,7 @@ public class MobScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        attacksound = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -92,6 +96,7 @@ public class MobScript : MonoBehaviour
 
    void Attack()
     {
+        attacksound.PlayOneShot(attackscream, 1F);
         transform.LookAt(player.position);
         fixRotation();
         GetComponent<Animation>().CrossFade(attack.name);

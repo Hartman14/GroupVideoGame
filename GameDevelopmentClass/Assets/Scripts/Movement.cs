@@ -3,6 +3,13 @@ using System.Collections;
 
 public class Movement : MonoBehaviour
 {
+
+    public AudioClip moveItClip;
+    private AudioSource movementsound;
+
+    private float lowSound = 0.4f;
+    private float highSound = 1.0f;
+
     public Camera playersCamera;
 
     public float movementSpeed = 20f;
@@ -27,9 +34,9 @@ public class Movement : MonoBehaviour
     void Start()
     {
 
-       
 
-       playersCamera =gameObject.GetComponentInChildren<Camera>();
+        movementsound = GetComponent<AudioSource>();
+        playersCamera =gameObject.GetComponentInChildren<Camera>();
      
         if (PlayerPrefs.HasKey("sensitivityValue")){
             sensitivity = PlayerPrefs.GetFloat("sensitivityValue");  //gets the stored value from the options screen 
@@ -68,7 +75,12 @@ public class Movement : MonoBehaviour
             newPosition = controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
             newPosition.y -= gravity * Time.deltaTime;
             controller.Move(newPosition);
-
+            if (!movementsound.isPlaying && Time.time >= 1)
+            {
+             
+                float vol = Random.Range(lowSound, highSound);
+                movementsound.PlayOneShot(moveItClip, vol);
+            }
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -76,6 +88,11 @@ public class Movement : MonoBehaviour
             newPosition = -1 * controller.transform.right * (Time.deltaTime * movementSpeed) * invertControls;
             newPosition.y -= gravity * Time.deltaTime;
             controller.Move(newPosition);
+            if (!movementsound.isPlaying && Time.time >= 1)
+            {
+                float vol = Random.Range(lowSound, highSound);
+                movementsound.PlayOneShot(moveItClip, vol);
+            }
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -83,6 +100,11 @@ public class Movement : MonoBehaviour
             newPosition = controller.transform.forward * (Time.deltaTime * movementSpeed) * invertControls;
             newPosition.y -= gravity * Time.deltaTime;
             controller.Move(newPosition);
+            if (!movementsound.isPlaying && Time.time >= 1)
+            {
+                float vol = Random.Range(lowSound, highSound);
+                movementsound.PlayOneShot(moveItClip, vol);
+            }
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
@@ -90,9 +112,15 @@ public class Movement : MonoBehaviour
             newPosition = -1 * controller.transform.forward * (Time.deltaTime * movementSpeed)* invertControls;
             newPosition.y -= gravity * Time.deltaTime;
             controller.Move(newPosition);
+            if (!movementsound.isPlaying && Time.time >= 1)
+            {
+                float vol = Random.Range(lowSound, highSound);
+                movementsound.PlayOneShot(moveItClip, vol);
+            }
         }
+      
 
-        
+
     }
 
     //rotates player
@@ -122,5 +150,7 @@ public class Movement : MonoBehaviour
        playersCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);//dan
 
     }
+ 
+       
 
 }

@@ -60,7 +60,10 @@
      <Compile Include="Assets\Scripts\DontPassThrough.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyPosition.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Armor.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\CameraView.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Gold.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Health.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Armor_Pickup.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Gold_Pickup.cs" />
@@ -68,6 +71,7 @@
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Pickup.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\PickupKey.cs" />
      <Compile Include="Assets\Scripts\LeightonScripts\Pickup\Poison_Pickup.cs" />
+     <Compile Include="Assets\Scripts\LeightonScripts\Poison.cs" />
      <Compile Include="Assets\Scripts\ListAdder.cs" />
      <Compile Include="Assets\Scripts\ListAdder_boss.cs" />
      <Compile Include="Assets\Scripts\ListAdder_caster.cs" />

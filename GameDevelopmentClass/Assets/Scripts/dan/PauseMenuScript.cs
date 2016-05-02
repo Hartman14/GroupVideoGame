@@ -19,7 +19,7 @@ public class PauseMenuScript : MonoBehaviour {
 	void Start () {
 	pauseGame = false;
         GameObject.Find("ResumeText").SetActive(true);
-
+        Cursor.visible = false;
 
     }
 	
@@ -32,7 +32,7 @@ public class PauseMenuScript : MonoBehaviour {
 
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().IsDead())
         {
-            
+            Cursor.visible = true;
             showDeathMenu(); 
         }
 
@@ -47,11 +47,11 @@ public class PauseMenuScript : MonoBehaviour {
                 }
                 if (pauseGame == true)
                 {
-                   
+                    Cursor.visible = true;
                     showPauseMenu1();
                 }
                 else {
-                    
+                    Cursor.visible = false;
                     resume();
                 }
             }
