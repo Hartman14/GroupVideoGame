@@ -1,43 +1,56 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Inventory : MonoBehaviour {
-
+public class Inventory : MonoBehaviour
+{
+    public AudioClip audioHurtPlayer;
+    private AudioSource audioSrc;
     public bool hasKey;
 
     private static int MAX_HEALTH = 100;
     private static int MAX_ARMOR = 100;
-    
     private int health = 72;
     private int score = 0;
 
-    [Range(0, 100)] private int armor;
+    public int startingHealth = 100;
+    public int startingArmor = 10;
     
-    private GameObject currentWeapon;
-    private GameObject[] weapons;
-    
-   [Range(0,100)] private int arrows;
-    
+    private int armor;
 
-	// Use this for initialization
-	void Start () {
-        health = 100;
-        armor = 100;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+    public GameObject weapons;
+
+    bool Dead = false;
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // Use this for initialization
+    void Start()
+    {
+        MAX_HEALTH = startingHealth;
+        MAX_ARMOR = 100;
+        health = startingHealth;
+        armor = startingArmor;
+        audioSrc = GetComponent<AudioSource>();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (health <= 0)
+        {
+            health = 0;
+            Die();
+        }
+
+    }
 
     public void ChangeHealth(int delta)
     {
         health += delta;
-        if(health <= 0)
-        {
-            this.Die();
-        }
-        else if(health > MAX_HEALTH)
+
+        if (health > MAX_HEALTH)
         {
             health = MAX_HEALTH;
         }
@@ -45,27 +58,24 @@ public class Inventory : MonoBehaviour {
 
     private void Die()
     {
-        Destroy(gameObject);
+        Dead = true;
+        gameObject.GetComponent<RotateWeapons>().StopAllCoroutines();
+        Destroy(weapons);
     }
 
-    public void AddScore(int score)
+    public void AddScore(int incoming)
     {
         if (score > 0)
         {
-            this.score += score;
+            score += incoming;
         }
     }
 
-    public void AddArmor(int armor)
+    public void AddArmor(int incoming)
     {
-        this.armor += armor;
+        armor += incoming;
     }
 
-    public void ChangeWeapon(int index)
-    {
-        currentWeapon = weapons[index];
-        //this.EquipWeapon...
-    }
 
     public int GetHealth()   //current health
     {
@@ -92,18 +102,89 @@ public class Inventory : MonoBehaviour {
         return MAX_ARMOR;
     }
 
-    void OnTriggerEnter(Collider other)
+    public bool IsDead()
     {
-        if (other.gameObject.CompareTag("Key"))
+        return Dead;
+    }
+
+    void TakeDamage(int incoming)
+    {
+        health -= incoming;
+    }
+
+    void OnTriggerEnter(Collider ouch)
+    {
+        if (ouch.gameObject.tag == "Dagger")
         {
-            other.gameObject.SetActive(false);
+            TakeDamage((int)(ouch.gameObject.GetComponent<SwordDamage>().Damage * ((float)10/armor)));
+            if (!audioSrc.isPlaying) // better but animation time and sound time differ
+            {
+                audioSrc.PlayOneShot(audioHurtPlayer, .2f);
+            }
+
+        }
+
+        if (ouch.gameObject.tag == "Key")
+        {
+            ouch.gameObject.SetActive(false);
 
             GameObject target = GameObject.Find("Door_B (1)");
 
             target.SetActive(false);
         }
+
+        if(ouch.gameObject.tag == "Door")
+        {
+            ouch.gameObject.SetActive(false);
+        }
+
+        if(ouch.gameObject.tag == "Fireball")
+        {
+            TakeDamage((int)(60 * ((float)10 / armor)));
+            try {
+                Destroy(ouch.GetComponentInParent<GameObject>());
+            }
+
+            catch
+            {
+
+            }
+            
+        }
+        if(ouch.gameObject.tag == "levelchange")
+        {
+            var nextlvl = ouch.gameObject.GetComponent<Next_Level>();
+            nextlvl.ChangeLevel();
+        }
+
+        if (ouch.gameObject.tag == "Health")
+        {
+            ChangeHealth(ouch.GetComponent<Health>().deltaHealth);
+            ouch.gameObject.SetActive(false);
+        }
+
+        if (ouch.gameObject.tag == "Poison")
+        {
+            ChangeHealth(ouch.GetComponent<Poison>().deltaHealth);
+            ouch.gameObject.SetActive(false);
+        }
+
+        if (ouch.gameObject.tag == "Gold")
+        {
+            AddScore(ouch.GetComponent<Gold>().deltaScore);
+            ouch.gameObject.SetActive(false);
+        }
+
+        if (ouch.gameObject.tag == "Armor")
+        {
+            AddArmor(ouch.GetComponent<Armor>().deltaArmorLevel);
+            ouch.gameObject.SetActive(false);
+        }
+
+
+        else
+        {
+
+        }
     }
-
-
-
 }
