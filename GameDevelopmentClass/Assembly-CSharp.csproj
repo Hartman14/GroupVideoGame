@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\ListAdder.cs" />
      <Compile Include="Assets\Scripts\ListAdder_boss.cs" />
      <Compile Include="Assets\Scripts\ListAdder_caster.cs" />
+     <Compile Include="Assets\Scripts\ManageKeys.cs" />
      <Compile Include="Assets\Scripts\MeleeWeapon.cs" />
      <Compile Include="Assets\Scripts\MobScript.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
@@ -94,6 +95,7 @@
      <Compile Include="Assets\Scripts\dan\move.cs" />
      <Compile Include="Assets\Scripts\spawnCaster.cs" />
      <Compile Include="Assets\Scripts\spawnboss.cs" />
+     <Compile Include="Assets\audioSCript.cs" />
      <Compile Include="Assets\hasPassedLevel.cs" />
      <None Include="Assets\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
      <None Include="Assets\PyroParticles\Readme.txt" />
