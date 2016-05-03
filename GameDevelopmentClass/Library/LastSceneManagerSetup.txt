@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/FirstRoomMazeCOMPLETEwithLighting.unity
-=======
 - path: Assets/Scenes/Devin's Stuff/Final Boss Area.unity
->>>>>>> refs/remotes/origin/master
   isLoaded: 1
   isActive: 1
