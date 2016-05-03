@@ -29,10 +29,15 @@ class Enemy : MonoBehaviour {
     {
         if (health <= 0)
         {
-            if (!deathsound.isPlaying && Time.time >= 1)
+            try
             {
-                deathsound.PlayOneShot(deathscream, 1f);
+                if (!deathsound.isPlaying && Time.time >= 1)
+                {
+
+                    deathsound.PlayOneShot(deathscream, 1f);
+                }
             }
+            catch { }
             if (!GetComponent<Animation>().IsPlaying(Death.name))
             {
                 if (!Died)
@@ -78,7 +83,10 @@ class Enemy : MonoBehaviour {
 
         if (other.gameObject.tag == "Sword")
         {
-            hurtSound.PlayOneShot(hurtclip, 10f);
+            try {
+                hurtSound.PlayOneShot(hurtclip, 10f);
+            }
+            catch { }
             damage((int)other.GetComponent<SwordDamage>().Damage);
             Debug.Log("sword hit enemy");
         }
