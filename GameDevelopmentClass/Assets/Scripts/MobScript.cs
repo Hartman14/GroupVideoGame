@@ -3,8 +3,7 @@ using System.Collections;
 
 public class MobScript : MonoBehaviour
 {
-
-
+    
     public AudioClip attackscream;
     private AudioSource attacksound;
     //variables

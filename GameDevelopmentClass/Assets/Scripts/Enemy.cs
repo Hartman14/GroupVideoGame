@@ -10,7 +10,6 @@ class Enemy : MonoBehaviour {
     public AudioClip deathscream;
     private AudioSource deathsound;
 
-
     public AnimationClip Death;
 
     public GameObject Dagger;
