@@ -29,6 +29,8 @@ class Enemy : MonoBehaviour {
     {
         if (health <= 0)
         {
+           
+            health = 0;
             if (!deathsound.isPlaying && Time.time >= 1)
             {
                 deathsound.PlayOneShot(deathscream, 1f);
