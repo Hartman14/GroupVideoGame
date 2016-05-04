@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DestructableOBJ.cs" />
      <Compile Include="Assets\DoorOpen.cs" />
      <Compile Include="Assets\OptionsMenu.cs" />
      <Compile Include="Assets\Proximity.cs" />
