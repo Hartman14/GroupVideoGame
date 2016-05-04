@@ -24,6 +24,8 @@ class Enemy : MonoBehaviour {
     {
         deathsound = GetComponent<AudioSource>();
         hurtSound = GetComponent<AudioSource>();
+        
+        
     }
     void Update()
     {
@@ -63,6 +65,14 @@ class Enemy : MonoBehaviour {
     public void death()
     {
         Debug.Log("death triggered");
+        if(this.name == "BossSkeletonDark(Clone)")
+        {
+            Debug.Log("boss killed");
+            GameObject target = GameObject.Find("finaltriggerObj");
+            target.transform.Translate(new Vector3(0.0f, 0.0f, 20f));
+            target.SetActive(true);
+        }
+        Debug.Log(this.name);
         Destroy(gameObject);
     }
 
