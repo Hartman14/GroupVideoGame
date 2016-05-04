@@ -19,7 +19,8 @@ public class hud : MonoBehaviour {
         setDisplayHealth(playerInventory.GetMaxHealth(), playerInventory.GetHealth());
         print(playerInventory.name);
        // print(player.name);
-        /*
+
+        /* //code for images, change of course, were not as important
         List<RawImage> rawImageslist = new List<RawImage>();
         
         RawImage[] RawImage = gameObject.GetComponentsInChildren<RawImage>();
@@ -48,6 +49,22 @@ public class hud : MonoBehaviour {
 	void Update () {
         setDisplayHealth(playerInventory.GetMaxHealth(), playerInventory.GetHealth());
         setDisplayArmor(playerInventory.GetMaxArmor(), playerInventory.GetArmor());
+        if (Input.GetKeyDown(KeyCode.Period))
+        {
+            playerInventory.ChangeHealth(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Comma))
+        {
+            playerInventory.ChangeHealth(-5);
+        }
+        if (Input.GetKeyDown(KeyCode.Quote))
+        {
+            playerInventory.AddArmor(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Semicolon))
+        {
+            playerInventory.AddArmor(-5);
+        }
     }
 
     void switchWeaponImage(string weapon)

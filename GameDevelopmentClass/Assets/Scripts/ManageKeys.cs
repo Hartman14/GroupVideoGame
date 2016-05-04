@@ -25,15 +25,15 @@ public class ManageKeys : MonoBehaviour {
         }
         if (keepkey != 1)
         {
-            Destroy(GameObject.Find("Dungeon_Key_Set (1)"));
+            Destroy(GameObject.Find("Dungeon_Key_Set(1)"));
         }
         if (keepkey != 2)
         {
-            Destroy(GameObject.Find("Dungeon_Key_Set (2)"));
+            Destroy(GameObject.Find("Dungeon_Key_Set(2)"));
         }
         if (keepkey != 3)
         {
-            Destroy(GameObject.Find("Dungeon_Key_Set (3)"));
+            Destroy(GameObject.Find("Dungeon_Key_Set(3)"));
         }
 
     }

@@ -8,11 +8,11 @@ public class Inventory : MonoBehaviour
     public bool hasKey;
     public bool MainMenu;
 
-    private static int MAX_HEALTH = 100;
+    private int MAX_HEALTH = 500;
     private static int MAX_ARMOR = 100;
     private int health = 72;
     private int score = 0;
-
+    public int maxHealth =500;
     public int startingHealth = 100;
     public int startingArmor = 10;
     
@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        MAX_HEALTH = startingHealth;
+        MAX_HEALTH = maxHealth;
         MAX_ARMOR = 100;
         health = startingHealth;
         armor = startingArmor;
@@ -54,6 +54,10 @@ public class Inventory : MonoBehaviour
         if (health > MAX_HEALTH)
         {
             health = MAX_HEALTH;
+        }
+        if (health <0)
+        {
+            health = 0;
         }
     }
 
@@ -82,8 +86,12 @@ public class Inventory : MonoBehaviour
         {
             armor = MAX_ARMOR;
         }
+        if (armor < 5)
+        {
+            armor = 5;
+        }
     }
-
+  
 
     public int GetHealth()   //current health
     {
