@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class PauseMenuScript : MonoBehaviour {
 
+   
 	public bool MenuShowing = false;
 	public bool pauseGame = false;
 	public GameObject pauseGroup;
@@ -30,10 +31,27 @@ public class PauseMenuScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Final Boss Area"))
+        {
+            try {
+                if (GameObject.FindGameObjectWithTag("FinalBoss").GetComponent<Enemy>().getDead())
+                {
+                    showPassLevelScreen();
+                }
+            }
+            catch
+            {
+                if (Input.GetKeyDown("m"))
+                {
+                    showPassLevelScreen();
+                }
+            } 
+        }
+
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().IsDead())
         {
             Cursor.visible = true;
-            showDeathMenu(); 
+            showDeathMenu();
         }
 
         else {
@@ -54,6 +72,15 @@ public class PauseMenuScript : MonoBehaviour {
                     Cursor.visible = false;
                     resume();
                 }
+            }
+            if (Input.GetKeyDown("7"))
+            {
+                NextLevelButton();
+            }
+            if (Input.GetKeyDown("k")){
+                GameObject target = GameObject.Find("Door_B (1)");
+
+                target.SetActive(false);
             }
             if (!pauseGame)
             {
@@ -84,7 +111,7 @@ public class PauseMenuScript : MonoBehaviour {
 	}
 
 	 public void quitGame(){
-		SceneManager.LoadScene ("MainMenu");
+		SceneManager.LoadScene (0);
 	}
 
 	public void NextLevelButton(){
@@ -108,7 +135,7 @@ public class PauseMenuScript : MonoBehaviour {
     public void showPassLevelScreen()
     {
         Time.timeScale = 0f;
-        GameObject.Find("ResumeText").SetActive(false);
+        //GameObject.Find("ResumeText").SetActive(false);
         pauseMenuText.text = "You Won!!!";
         NextLevelGameButton.enabled = false;
         MenuShowing = true;

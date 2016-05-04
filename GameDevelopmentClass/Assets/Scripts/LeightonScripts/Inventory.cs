@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
     public AudioClip audioHurtPlayer;
     private AudioSource audioSrc;
     public bool hasKey;
+    public bool MainMenu;
 
     private static int MAX_HEALTH = 100;
     private static int MAX_ARMOR = 100;
@@ -59,8 +60,11 @@ public class Inventory : MonoBehaviour
     private void Die()
     {
         Dead = true;
-        gameObject.GetComponent<RotateWeapons>().StopAllCoroutines();
-        Destroy(weapons);
+        if (!MainMenu)
+        {
+            gameObject.GetComponent<RotateWeapons>().StopAllCoroutines();
+            Destroy(weapons);
+        }
     }
 
     public void AddScore(int incoming)
@@ -74,6 +78,10 @@ public class Inventory : MonoBehaviour
     public void AddArmor(int incoming)
     {
         armor += incoming;
+        if(armor > MAX_ARMOR)
+        {
+            armor = MAX_ARMOR;
+        }
     }
 
 

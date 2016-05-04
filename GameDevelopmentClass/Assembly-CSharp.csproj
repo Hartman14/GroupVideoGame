@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DestructableOBJ.cs" />
      <Compile Include="Assets\DoorOpen.cs" />
      <Compile Include="Assets\OptionsMenu.cs" />
      <Compile Include="Assets\Proximity.cs" />
@@ -96,6 +97,7 @@
      <Compile Include="Assets\Scripts\spawnCaster.cs" />
      <Compile Include="Assets\Scripts\spawnboss.cs" />
      <Compile Include="Assets\audioSCript.cs" />
+     <Compile Include="Assets\finalwin.cs" />
      <Compile Include="Assets\hasPassedLevel.cs" />
      <None Include="Assets\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
      <None Include="Assets\PyroParticles\Readme.txt" />

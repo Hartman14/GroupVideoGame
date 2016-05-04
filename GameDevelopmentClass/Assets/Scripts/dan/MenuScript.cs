@@ -37,15 +37,15 @@ public class MenuScript : MonoBehaviour {
 		//firstScene = "testscene";
 		HideMenus ();
 
-		//quitMenu = quitMenu.GetComponent<Canvas> ();
-		//newGameButton = newGameButton.GetComponent<Button> ();
-		//loadGameButton = loadGameButton.GetComponent<Button> ();
-		//optionsView = optionsView.GetComponent<Canvas> ();
-		//loadGame = loadGame.GetComponent<Canvas> ();
-		//startMenu = startMenu.GetComponent<Canvas> ();
+        //quitMenu = quitMenu.GetComponent<Canvas> ();
+        //newGameButton = newGameButton.GetComponent<Button> ();
+        //loadGameButton = loadGameButton.GetComponent<Button> ();
+        //optionsView = optionsView.GetComponent<Canvas> ();
+        //loadGame = loadGame.GetComponent<Canvas> ();
+        //startMenu = startMenu.GetComponent<Canvas> ();
 
-
-	}
+        Cursor.visible = true;
+    }
 	//this method hids all menus, except the start menu.  used to ensure that all extra menus are hidden when the game is started.
 	//this is called in the start() method.
 	public void HideMenus(){
