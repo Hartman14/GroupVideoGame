@@ -85,7 +85,7 @@ class Enemy : MonoBehaviour {
     {
         if(other.gameObject.tag == "Arrow")
         {
-            hurtSound.PlayOneShot(hurtclip, 10f);
+            hurtSound.PlayOneShot(hurtclip, 1.5f);
             damage((int)other.GetComponent<ArrowDamage>().Damage);
             Destroy(other.gameObject);
             Debug.Log("arrow hit enemy");
@@ -94,7 +94,7 @@ class Enemy : MonoBehaviour {
         if (other.gameObject.tag == "Sword")
         {
             try {
-                hurtSound.PlayOneShot(hurtclip, 10f);
+                hurtSound.PlayOneShot(hurtclip, 1.5f);
             }
             catch { }
             damage((int)other.GetComponent<SwordDamage>().Damage);
