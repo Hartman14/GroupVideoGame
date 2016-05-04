@@ -78,6 +78,10 @@ public class Inventory : MonoBehaviour
     public void AddArmor(int incoming)
     {
         armor += incoming;
+        if(armor > MAX_ARMOR)
+        {
+            armor = MAX_ARMOR;
+        }
     }
 
 

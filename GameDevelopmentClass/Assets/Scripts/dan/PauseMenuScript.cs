@@ -73,6 +73,15 @@ public class PauseMenuScript : MonoBehaviour {
                     resume();
                 }
             }
+            if (Input.GetKeyDown("7"))
+            {
+                NextLevelButton();
+            }
+            if (Input.GetKeyDown("k")){
+                GameObject target = GameObject.Find("Door_B (1)");
+
+                target.SetActive(false);
+            }
             if (!pauseGame)
             {
                 resume();
@@ -102,7 +111,7 @@ public class PauseMenuScript : MonoBehaviour {
 	}
 
 	 public void quitGame(){
-		SceneManager.LoadScene ("MainMenu");
+		SceneManager.LoadScene (0);
 	}
 
 	public void NextLevelButton(){
