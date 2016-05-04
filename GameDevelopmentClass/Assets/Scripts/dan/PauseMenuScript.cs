@@ -124,7 +124,7 @@ public class PauseMenuScript : MonoBehaviour {
 
     public void showDeathMenu()
     {
-        GameObject.Find("ResumeText").SetActive(false);
+        //GameObject.Find("ResumeText").SetActive(false);
         pauseMenuText.text = "Died, try again";
         NextLevelGameButton.enabled = false;
         MenuShowing = true;
